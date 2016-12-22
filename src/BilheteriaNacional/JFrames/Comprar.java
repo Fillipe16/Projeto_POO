@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -34,18 +35,23 @@ public class Comprar extends javax.swing.JFrame {
     String sessao="";
     String sala="";
     String horario="";
+    String dia="";
+    
     Sessao s;
     
-    public void atualizarComprar(ArrayList<Sessao> sessoes,String sessao,String horario,String sala,Sessao s){
+    public void atualizarComprar(ArrayList<Sessao> sessoes,String sessao,String horario,String sala,Sessao s,String d){
         this.sessoes=sessoes;
         this.sessao=sessao;
         this.sala=sala;
         this.horario=horario;
         this.s=s;
+        this.dia=d;
+        
+        System.out.println("DIIAAA:"+dia);
         
         jsessao.setText(sessao);
         
-        cadeirasSessao=Sbanco.verC(sala,horario);
+        cadeirasSessao=Sbanco.verC(sala,horario,dia);
         
         atualizandoCadeiras();
     }
@@ -1050,17 +1056,17 @@ public class Comprar extends javax.swing.JFrame {
         for(int i=0;i<s.getCadeiras().size();i++){
             if(s.getCadeiras().get(i).getEstado()==-1){
                 String cad,codigo;
-                codigo=String.valueOf(i+1)+sala+horario.substring(0, 2)+horario.substring(3, 5)+String.valueOf(random.nextInt(10))+String.valueOf(random.nextInt(10))+String.valueOf(random.nextInt(10))+String.valueOf(random.nextInt(10));
+                codigo=String.valueOf(i+1)+sala+horario.substring(0, 2)+horario.substring(3, 5)+dia.substring(0, 2)+dia.substring(3,5)+String.valueOf(random.nextInt(10))+String.valueOf(random.nextInt(10))+String.valueOf(random.nextInt(10))+String.valueOf(random.nextInt(10));
                 cad=s.getCadeiras().get(i).getNome();
                 s.getCadeiras().get(i).setEstado(0);
-                Ingresso ingresso=new Ingresso(codigo,horario,cad,sala,filme,10);
+                Ingresso ingresso=new Ingresso(codigo,horario,cad,sala,filme,dia,10);
                 Ibanco.adicionar(ingresso);
             }
         }
         
-        cads=Ibanco.cadeirasOcupadas(sala,horario);
-        Sbanco.atualizarCadeiras(cads.toString(), sala, horario);
-        cadeirasSessao=Sbanco.verC(sala,horario);
+        cads=Ibanco.cadeirasOcupadas(sala,horario,dia);
+        Sbanco.atualizarCadeiras(cads.toString(), sala, horario,dia);
+        cadeirasSessao=Sbanco.verC(sala,horario,dia);
         
         atualizandoCadeiras();
         

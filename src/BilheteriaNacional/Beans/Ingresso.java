@@ -11,17 +11,20 @@ package BilheteriaNacional.Beans;
  * @author Aluno
  */
 public class Ingresso {
-    private String codigo,data_filme,nome_cadeira,nome_sala,filme;
+    private String codigo,data_filme,nome_cadeira,nome_sala,filme,dia;
     private double preco;
- 
-    public Ingresso(String codigo, String data_filme, String nome_cadeira, String nome_sala, String filme, double preco) {
+
+    public Ingresso(String codigo, String data_filme, String nome_cadeira, String nome_sala, String filme, String dia, double preco) {
         this.codigo = codigo;
         this.data_filme = data_filme;
         this.nome_cadeira = nome_cadeira;
         this.nome_sala = nome_sala;
         this.filme = filme;
+        this.dia = dia;
         this.preco = preco;
     }
+ 
+    
 
     public Ingresso(String codigo,String filme, String nome_sala,String nome_cadeira, double preco) {
         this.codigo = codigo;
@@ -78,6 +81,15 @@ public class Ingresso {
     public void setPreco(double preco) {
         this.preco = preco;
     }
+
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+    
     @Override
     public String toString(){
         return "Filme:"+filme+",Preço:"+preco;

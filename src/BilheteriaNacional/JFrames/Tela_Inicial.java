@@ -69,8 +69,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
         dias.add("29/12");
         dias.add("30/12");
         
-        jdias.addItem(dias.get(0).toString());
-        jdias.addItem(dias.get(1).toString());
+        jdias.addItem(dias.get(0));
+        jdias.addItem(dias.get(1));
         
     }
     /**
@@ -286,7 +286,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
             comprar=new Comprar();
             comprar.setVisible(true);
-            comprar.atualizarComprar(sessoes,aux.toString(),horarioe,salae,se);
+            comprar.atualizarComprar(sessoes,aux.toString(),horarioe,salae,se,jdias.getSelectedItem().toString());
         }
 
     }//GEN-LAST:event_jcompraActionPerformed

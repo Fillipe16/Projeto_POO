@@ -36,14 +36,16 @@ public class Reembolso extends javax.swing.JFrame {
         
         ArrayList<Object> dados=new ArrayList();
         
-        String nomeCad=codigo.substring(0, codigo.length()-9);
+        String nomeCad=codigo.substring(0, codigo.length()-13);
         
-        String salaAntiga=codigo.substring(codigo.length()-9,codigo.length()-8);
+        String sala=codigo.substring(codigo.length()-13,codigo.length()-12);
         
-        String horario=codigo.substring(codigo.length()-8,codigo.length()-6) + ":" + codigo.substring(codigo.length()-6,codigo.length()-4);
+        String horario=codigo.substring(codigo.length()-12,codigo.length()-10) + ":" + codigo.substring(codigo.length()-10,codigo.length()-8);
+        
+        String dia=codigo.substring(codigo.length()-8,codigo.length()-6) + "/" + codigo.substring(codigo.length()-6,codigo.length()-4);
         
         for(int i=0;i<sessoes.size();i++){
-            if(sessoes.get(i).getSala().equals(salaAntiga) && sessoes.get(i).getHorario().equals(horario)){
+            if(sessoes.get(i).getSala().equals(sala) && sessoes.get(i).getHorario().equals(horario) && sessoes.get(i).getDia().equals(dia)){
                 sessao=sessoes.get(i);
             }
         }
@@ -58,7 +60,7 @@ public class Reembolso extends javax.swing.JFrame {
         
         Cadeira c=new Cadeira();
         
-        String cads=Sbanco.verC(salaAntiga, horario);
+        String cads=Sbanco.verC(sala, horario,dia);
         
         int tamanho=cads.length();
         int indexfim=0;
@@ -210,7 +212,7 @@ public class Reembolso extends javax.swing.JFrame {
         String cad=getSessaoCodigoCadeira(cod).get(1).toString();
         
         Ibanco.deleteI(cod);
-        Sbanco.atualizarCadeiras(cad, sessao.getSala(), sessao.getHorario());
+        Sbanco.atualizarCadeiras(cad, sessao.getSala(), sessao.getHorario(), sessao.getDia());
         
         dispose();
     }//GEN-LAST:event_jreembolsarActionPerformed

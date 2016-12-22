@@ -20,13 +20,14 @@ public class SessaoDAO {
         conexao=new ConexaoBanco().getConexao();
     }
      public void adicionar(Sessao s){
-        String sql = "insert ignore into sessao (sala,horario,cadeiras) values (?,?,?)";
+        String sql = "insert ignore into sessao (sala,horario,cadeiras,dia) values (?,?,?,?)";
         PreparedStatement stmt = null;
         try{
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, s.getSala());
             stmt.setString(2, s.getHorario());
             stmt.setString(3,"");
+            stmt.setString(4, s.getDia());
             stmt.execute();
             stmt.close();
 
@@ -35,13 +36,14 @@ public class SessaoDAO {
             System.out.println("Erro na insercao do banco de dados: "+e);
         }
      }
-     public void atualizarCadeiras(String cad,String sala,String h){
+     public void atualizarCadeiras(String cad,String sala,String h,String dia){
          PreparedStatement stmt=null;
          try{
-             stmt=conexao.prepareStatement("update sessao set cadeiras=? where sala=? and horario=?");
+             stmt=conexao.prepareStatement("update sessao set cadeiras=? where sala=? and horario=? and dia=?");
              stmt.setString(1,cad);
              stmt.setString(2,sala);
              stmt.setString(3,h);
+             stmt.setString(4,dia);
              stmt.execute();
              stmt.close();
              
@@ -50,13 +52,14 @@ public class SessaoDAO {
              System.out.println("Erro na atualização das informação: "+ex);
          }
      }
-     public String verC(String sala,String h){
+     public String verC(String sala,String h,String dia){
          String cads="";
          
          try{
-            PreparedStatement stmt = conexao.prepareStatement("select cadeiras from sessao where sala=? and horario=?");
+            PreparedStatement stmt = conexao.prepareStatement("select cadeiras from sessao where sala=? and horario=? and dia=?");
             stmt.setString(1, sala);
             stmt.setString(2,h);
+            stmt.setString(3,dia);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 cads=rs.getString("cadeiras");

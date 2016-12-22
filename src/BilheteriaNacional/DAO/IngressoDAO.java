@@ -20,7 +20,7 @@ public class IngressoDAO {
         conexao=new ConexaoBanco().getConexao();
     }
      public void adicionar(Ingresso i){
-        String sql = "insert into ingresso (codigo,filme,cadeira,sala,data_filme,preco) values (?,?,?,?,?,?)";
+        String sql = "insert into ingresso (codigo,filme,cadeira,sala,dia,data_filme,preco) values (?,?,?,?,?,?,?)";
         PreparedStatement stmt = null;
         try{
             stmt = conexao.prepareStatement(sql);
@@ -28,8 +28,9 @@ public class IngressoDAO {
             stmt.setString(2, i.getFilme());
             stmt.setString(3, i.getCadeira());
             stmt.setString(4, i.getSala());
-            stmt.setString(5, i.getData_Filme());
-            stmt.setDouble(6, i.getPreco());
+            stmt.setString(5, i.getDia());
+            stmt.setString(6, i.getData_Filme());
+            stmt.setDouble(7, i.getPreco());
             stmt.execute();
             stmt.close();
 
@@ -47,10 +48,8 @@ public class IngressoDAO {
 
             while (rs.next()) {
 
-                //criando o objeto Funcionario
                 Ingresso i = new Ingresso(rs.getString("codigo"),rs.getString("filme"),rs.getString("sala"), rs.getString("cadeira"),rs.getDouble("preco"));
 
-                // adicionando o objeto à lista
                 ingressos.add(i);
             }
 
@@ -61,12 +60,13 @@ public class IngressoDAO {
         }
         return ingressos;
   }
-  public ArrayList<String> cadeirasOcupadas(String sala,String h){
+  public ArrayList<String> cadeirasOcupadas(String sala,String h,String dia){
       ArrayList<String> cadeirasO =new ArrayList();
       try{
-            PreparedStatement stmt = conexao.prepareStatement("select cadeira from ingresso where sala=? and data_filme=?");
+            PreparedStatement stmt = conexao.prepareStatement("select cadeira from ingresso where sala=? and data_filme=? and dia=?");
             stmt.setString(1, sala);
             stmt.setString(2,h);
+            stmt.setString(3,dia);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 String cad=rs.getString("cadeira");
