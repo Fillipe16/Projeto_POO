@@ -20,7 +20,7 @@ public class SessaoDAO {
         conexao=new ConexaoBanco().getConexao();
     }
      public void adicionar(Sessao s){
-        String sql = "insert into sessao (sala,horario,cadeiras) values (?,?,?)";
+        String sql = "insert ignore into sessao (sala,horario,cadeiras) values (?,?,?)";
         PreparedStatement stmt = null;
         try{
             stmt = conexao.prepareStatement(sql);
