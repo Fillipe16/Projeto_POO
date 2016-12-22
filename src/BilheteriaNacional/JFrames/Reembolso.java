@@ -47,7 +47,7 @@ public class Reembolso extends javax.swing.JFrame {
                 sessao=sessoes.get(i);
             }
         }
-        
+
         char ultimoDigitodaCad;
         
         if(nomeCad.length()>1){
@@ -62,18 +62,34 @@ public class Reembolso extends javax.swing.JFrame {
         
         int tamanho=cads.length();
         int indexfim=0;
-        
+
         for(int i=0;i<cads.length();i++){
 
-            if(cads.charAt(i)==ultimoDigitodaCad && (cads.charAt(i+1)==',' || cads.charAt(i+1)==',')){
+            if(cads.charAt(i)==ultimoDigitodaCad && (cads.charAt(i+1)==',' ^ cads.charAt(i+1)==']')){
                 indexfim=i;
             }
         }
-        
+
         if(nomeCad.length()>1){
-            cads=cads.substring(0, indexfim-4)+cads.substring(indexfim+3, tamanho);
+            if(cads.charAt(indexfim+1)==']'){
+                cads=cads.substring(0, indexfim-6)+cads.substring(indexfim+1, tamanho);
+            }
+            else if(cads.charAt(indexfim-5)=='['){
+                cads=cads.substring(0, indexfim-4)+cads.substring(indexfim+3, tamanho);
+            }
+            else{
+                cads=cads.substring(0, indexfim-4)+cads.substring(indexfim+3, tamanho);
+            }
         }else{
-            cads=cads.substring(0, indexfim-3)+cads.substring(indexfim+3, tamanho);
+            if(cads.charAt(indexfim+1)==']'){
+                cads=cads.substring(0, indexfim-5)+cads.substring(indexfim+1, tamanho);
+            }
+            else if(cads.charAt(indexfim-4)=='['){
+                cads=cads.substring(0, indexfim-3)+cads.substring(indexfim+3, tamanho);
+            }
+            else{
+                cads=cads.substring(0, indexfim-3)+cads.substring(indexfim+3, tamanho);
+            }
         }
         
         dados.add(sessao);

@@ -218,7 +218,10 @@ public class MudancaSessao extends javax.swing.JFrame {
         Reembolso r=new Reembolso();
          
         String cads=r.getSessaoCodigoCadeira(codigo).get(1).toString();
+        
         Sessao sessao=(Sessao)r.getSessaoCodigoCadeira(codigo).get(0);
+        
+        System.out.println("Cadeiras:"+sessao);
         
         Ibanco.deleteI(codigo);
         Sbanco.atualizarCadeiras(cads, sessao.getSala(), sessao.getHorario());
