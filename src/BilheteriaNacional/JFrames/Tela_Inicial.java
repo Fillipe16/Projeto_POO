@@ -219,7 +219,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
         jlabeltitulo.setBounds(0, 10, 640, 50);
 
         jlist.setBackground(new java.awt.Color(37, 116, 169));
-        jlist.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jlist.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jlist.setForeground(new java.awt.Color(242, 241, 239));
         jScrollPane1.setViewportView(jlist);
 
