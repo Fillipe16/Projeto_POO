@@ -21,15 +21,19 @@ public class Sessao {
     private ArrayList<Cadeira> cadeiras=new ArrayList();
     private String sala;
     private String horario;
+    private String dia;
 
-    public Sessao(String sala, String horario) {
+    public Sessao(String sala, String horario, String dia) {
         this.sala = sala;
         this.horario = horario;
+        this.dia = dia;
     }
+
 
     public Sessao() {
         this.sala="";
         this.horario="";
+        this.dia="";
     }
     
     
@@ -84,6 +88,15 @@ public class Sessao {
     public void setHorario(String horario) {
         this.horario = horario;
     }
+
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+    
     public static ArrayList<String> dados(String s){
         ArrayList<String> dados=new ArrayList();
         int contador=0;

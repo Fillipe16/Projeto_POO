@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 public class Tela_Inicial extends javax.swing.JFrame {
     ArrayList<Sessao> sessoes=new ArrayList();
     ArrayList<String> filmes=new ArrayList();
+    ArrayList<String> dias=new ArrayList();
     
     Comprar comprar;
     
@@ -32,28 +33,31 @@ public class Tela_Inicial extends javax.swing.JFrame {
     }
     public ArrayList initCadeiras(){
         SessaoDAO SBanco=new SessaoDAO();
-        for(int i=0;i<filmes.size();i++){
-            int contador=0;
-            String sala="";
-            String hr="";
-            for(int j=0;j<filmes.get(i).length();j++){
-                char c=filmes.get(i).charAt(j);
-                if(c=='|'){
-                    contador++;
-                }
-                if(contador==1 && Character.isDigit(c)){
-                    sala+=c;
-                }
-                if(contador==2 && Character.isDigit(c) ||(c==':' && Character.isDigit(filmes.get(i).charAt(j+1)))){
-                    hr+=c;
-                }
-            }
-            Sessao s=new Sessao(sala,hr);
-            s.init(s);
-            SBanco.adicionar(s);
-            sessoes.add(s);
-        }
+        for(int k=0;k<dias.size();k++){
+            for(int i=0;i<filmes.size();i++){
+                int contador=0;
+                String sala="";
+                String hr="";
 
+                for(int j=0;j<filmes.get(i).length();j++){
+                    char c=filmes.get(i).charAt(j);
+                    if(c=='|'){
+                        contador++;
+                    }
+                    if(contador==1 && Character.isDigit(c)){
+                        sala+=c;
+                    }
+                    if(contador==2 && Character.isDigit(c) ||(c==':' && Character.isDigit(filmes.get(i).charAt(j+1)))){
+                        hr+=c;
+                    }
+                }
+                Sessao s=new Sessao(sala,hr,dias.get(k));
+                s.init(s);
+                SBanco.adicionar(s);
+                sessoes.add(s);
+            }
+            
+        }
         return sessoes;
     }
     
@@ -61,6 +65,13 @@ public class Tela_Inicial extends javax.swing.JFrame {
         filmes.add("Filme: A | Sala: 1 | Horário: 14:20");
         filmes.add("Filme: B | Sala: 1 | Horário: 16:30");
         filmes.add("Filme: C | Sala: 2 | Horário: 13:00");
+        
+        dias.add("29/12");
+        dias.add("30/12");
+        
+        jdias.addItem(dias.get(0).toString());
+        jdias.addItem(dias.get(1).toString());
+        
     }
     /**
      * Creates new form Tela_Inicial
@@ -69,8 +80,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
         initComponents();
         initFilmes();
         initCadeiras();
-        jlist.setListData(filmes.toArray());
-        
+        jlist.setListData(filmes.toArray());     
     }
 
     /**
@@ -98,7 +108,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
         jlabeltitulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jlist = new javax.swing.JList();
-        jComboBox2 = new javax.swing.JComboBox();
+        jdias = new javax.swing.JComboBox();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jbackground = new javax.swing.JLabel();
@@ -226,16 +236,15 @@ public class Tela_Inicial extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(10, 160, 290, 310);
 
-        jComboBox2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hoje" }));
-        jComboBox2.setOpaque(false);
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        jdias.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jdias.setOpaque(false);
+        jdias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                jdiasActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(10, 130, 100, 25);
+        getContentPane().add(jdias);
+        jdias.setBounds(10, 130, 100, 25);
 
         jSeparator2.setBackground(new java.awt.Color(242, 241, 239));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -282,9 +291,9 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jcompraActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void jdiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdiasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_jdiasActionPerformed
 
     private void jsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsairActionPerformed
         JOptionPane.showMessageDialog(null, "Volte sempre!");
@@ -353,7 +362,6 @@ public class Tela_Inicial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -361,6 +369,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private javax.swing.JLabel jbackground;
     private javax.swing.JButton jcompra;
     private javax.swing.JLabel jcompraricon;
+    private javax.swing.JComboBox jdias;
     private javax.swing.JLabel jlabeltitulo;
     private javax.swing.JList jlist;
     private javax.swing.JButton jmudar;
