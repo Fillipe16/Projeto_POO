@@ -1,8 +1,4 @@
-package BilheteriaNacional.JFrames;
 
-
-import BilheteriaNacional.Beans.Sessao;
-import BilheteriaNacional.DAO.SessaoDAO;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -20,12 +16,9 @@ import javax.swing.JOptionPane;
 public class Tela_Inicial extends javax.swing.JFrame {
     ArrayList<Sessao> sessoes=new ArrayList();
     ArrayList<String> filmes=new ArrayList();
-    
-    Comprar comprar;
-    
+    Comprar enviar;
     String salae="";
     String horarioe="";
-    
     Sessao se;
     public JButton getComprar(){
         return jcompra;
@@ -95,14 +88,13 @@ public class Tela_Inicial extends javax.swing.JFrame {
         jreembolso = new javax.swing.JButton();
         jsairicon = new javax.swing.JLabel();
         jsair = new javax.swing.JButton();
-        jlabeltitulo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jlist = new javax.swing.JList();
         jComboBox2 = new javax.swing.JComboBox();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jbackground = new javax.swing.JLabel();
-        jvalidacaoicon1 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -110,12 +102,14 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(640, 480));
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jcompraricon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/comprar.png"))); // NOI18N
+        jcompraricon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/comprar.png"))); // NOI18N
         getContentPane().add(jcompraricon);
         jcompraricon.setBounds(400, 150, 40, 50);
 
@@ -134,7 +128,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
         getContentPane().add(jcompra);
         jcompra.setBounds(420, 160, 200, 30);
 
-        jvalidacaoicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/validar.png"))); // NOI18N
+        jvalidacaoicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/validar.png"))); // NOI18N
         jvalidacaoicon.setToolTipText("");
         getContentPane().add(jvalidacaoicon);
         jvalidacaoicon.setBounds(400, 190, 40, 50);
@@ -154,9 +148,9 @@ public class Tela_Inicial extends javax.swing.JFrame {
         getContentPane().add(jvalidacao);
         jvalidacao.setBounds(420, 200, 200, 30);
 
-        jmudaricon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/mudar.png"))); // NOI18N
+        jmudaricon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mudar.png"))); // NOI18N
         getContentPane().add(jmudaricon);
-        jmudaricon.setBounds(400, 230, 40, 50);
+        jmudaricon.setBounds(400, 230, 32, 50);
 
         jmudar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jmudar.setForeground(new java.awt.Color(242, 241, 239));
@@ -173,9 +167,9 @@ public class Tela_Inicial extends javax.swing.JFrame {
         getContentPane().add(jmudar);
         jmudar.setBounds(420, 240, 200, 30);
 
-        jreembolsoicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/reembolso.png"))); // NOI18N
+        jreembolsoicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reembolso.png"))); // NOI18N
         getContentPane().add(jreembolsoicon);
-        jreembolsoicon.setBounds(400, 270, 30, 50);
+        jreembolsoicon.setBounds(400, 280, 32, 32);
 
         jreembolso.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jreembolso.setForeground(new java.awt.Color(242, 241, 239));
@@ -192,9 +186,9 @@ public class Tela_Inicial extends javax.swing.JFrame {
         getContentPane().add(jreembolso);
         jreembolso.setBounds(420, 280, 200, 30);
 
-        jsairicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/sair.png"))); // NOI18N
+        jsairicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sair.png"))); // NOI18N
         getContentPane().add(jsairicon);
-        jsairicon.setBounds(400, 310, 40, 50);
+        jsairicon.setBounds(400, 320, 32, 32);
 
         jsair.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jsair.setForeground(new java.awt.Color(242, 241, 239));
@@ -211,14 +205,14 @@ public class Tela_Inicial extends javax.swing.JFrame {
         getContentPane().add(jsair);
         jsair.setBounds(420, 320, 200, 30);
 
-        jlabeltitulo.setFont(new java.awt.Font("Dialog", 1, 45)); // NOI18N
-        jlabeltitulo.setForeground(new java.awt.Color(242, 241, 239));
-        jlabeltitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlabeltitulo.setText(" Bilheteria Nacional");
-        getContentPane().add(jlabeltitulo);
-        jlabeltitulo.setBounds(0, 10, 640, 50);
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 45)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText(" Bilheteria Nacional");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 10, 640, 50);
 
-        jlist.setBackground(new java.awt.Color(37, 116, 169));
+        jlist.setBackground(new java.awt.Color(82, 179, 217));
         jlist.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jlist.setForeground(new java.awt.Color(242, 241, 239));
         jScrollPane1.setViewportView(jlist);
@@ -248,14 +242,9 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
         jbackground.setBackground(new java.awt.Color(255, 255, 255));
         jbackground.setForeground(new java.awt.Color(255, 255, 255));
-        jbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/background 4.png"))); // NOI18N
+        jbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background 4.png"))); // NOI18N
         getContentPane().add(jbackground);
         jbackground.setBounds(0, 0, 640, 480);
-
-        jvalidacaoicon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/validar.png"))); // NOI18N
-        jvalidacaoicon1.setToolTipText("");
-        getContentPane().add(jvalidacaoicon1);
-        jvalidacaoicon1.setBounds(400, 190, 40, 50);
 
         pack();
         setLocationRelativeTo(null);
@@ -264,22 +253,31 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private void jcompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcompraActionPerformed
         // TODO add your handling code here:
         Object aux=jlist.getSelectedValue();
-        if(aux==null){
-            JOptionPane.showMessageDialog(rootPane, "Sessão não selecionada!");
-        }else{
-            salae=Sessao.dados(aux.toString()).get(0);
-            horarioe=Sessao.dados(aux.toString()).get(1);
-            for(int i=0;i<sessoes.size();i++){
-                if(sessoes.get(i).getSala().equals(salae) && sessoes.get(i).getHorario().equals(horarioe)){
-                    se=sessoes.get(i);
-                }
+        salae=Sessao.dados(aux.toString()).get(0);
+        horarioe=Sessao.dados(aux.toString()).get(1);
+       
+        for(int i=0;i<sessoes.size();i++){
+            if(sessoes.get(i).getSala().equals(salae) && sessoes.get(i).getHorario().equals(horarioe)){
+                se=sessoes.get(i);
             }
-
-            comprar=new Comprar();
-            comprar.setVisible(true);
-            comprar.atualizarComprar(sessoes,aux.toString(),horarioe,salae,se);
         }
+        
+        if(enviar==null){
+            enviar=new Comprar();
+            enviar.setVisible(true);
+            enviar.recebendo(sessoes,aux.toString(),salae,horarioe,se);
+            enviar.atualizandoCadeiras();
+        }
+        else{
+            enviar.setVisible(true);
+            enviar.setState(Comprar.NORMAL);
+            enviar.recebendo(sessoes,aux.toString(),salae,horarioe,se);
+            enviar.cads=enviar.Ibanco.cadeirasOcupadas(salae,horarioe);
+            enviar.Sbanco.analisarCadeira(enviar.cads.toString(), salae, horarioe);
+            enviar.cadeirasSessao=enviar.Sbanco.verC(salae, horarioe);
+            enviar.atualizandoCadeiras();
 
+        }
     }//GEN-LAST:event_jcompraActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
@@ -354,6 +352,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -361,7 +360,6 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private javax.swing.JLabel jbackground;
     private javax.swing.JButton jcompra;
     private javax.swing.JLabel jcompraricon;
-    private javax.swing.JLabel jlabeltitulo;
     private javax.swing.JList jlist;
     private javax.swing.JButton jmudar;
     private javax.swing.JLabel jmudaricon;
@@ -371,6 +369,5 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private javax.swing.JLabel jsairicon;
     private javax.swing.JButton jvalidacao;
     private javax.swing.JLabel jvalidacaoicon;
-    private javax.swing.JLabel jvalidacaoicon1;
     // End of variables declaration//GEN-END:variables
 }

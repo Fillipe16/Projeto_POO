@@ -45,7 +45,9 @@ public class ValidarIngresso extends javax.swing.JFrame {
         jbackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(480, 240));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(480, 240));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -126,15 +128,15 @@ public class ValidarIngresso extends javax.swing.JFrame {
     private void jvalidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jvalidarActionPerformed
         // TODO add your handling code here:
         IngressoDAO Ibanco=new IngressoDAO();
-        System.out.println("CT:"+jcodigo.getText());
+        
         String cod=Ibanco.validarI(jcodigo.getText());
-        System.out.println(cod);
+        
         if(!cod.equals("")){
             JOptionPane.showMessageDialog(rootPane, "Ingresso validado com sucesso");
         }else{
             JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro na validação do ingresso");
         }
-        ValidarIngresso.this.dispose();
+        dispose();
     }//GEN-LAST:event_jvalidarActionPerformed
 
     private void jcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcancelarActionPerformed

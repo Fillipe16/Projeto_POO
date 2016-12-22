@@ -1,10 +1,4 @@
-package BilheteriaNacional.JFrames;
 
-
-import BilheteriaNacional.Beans.Sessao;
-import BilheteriaNacional.Beans.Cadeira;
-import BilheteriaNacional.DAO.SessaoDAO;
-import BilheteriaNacional.DAO.IngressoDAO;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -25,17 +19,12 @@ public class MudancaSessao extends javax.swing.JFrame {
     /**
      * Creates new form MudancaSessao
      */
-    SessaoDAO Sbanco=new SessaoDAO();
-    IngressoDAO Ibanco=new IngressoDAO();
-    
     ArrayList<Sessao> sessoes=new ArrayList();
     ArrayList<String> filmes=new ArrayList();
-    
     public void recebendo(ArrayList<Sessao> s,ArrayList<String> f){
         this.filmes=f;
         this.sessoes=s;
     }
-    
     public MudancaSessao() {
         initComponents();
     }
@@ -82,6 +71,7 @@ public class MudancaSessao extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
         setUndecorated(true);
         setResizable(false);
@@ -108,7 +98,6 @@ public class MudancaSessao extends javax.swing.JFrame {
         jProximaSala.setBackground(new java.awt.Color(37, 116, 169));
         jProximaSala.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jProximaSala.setForeground(new java.awt.Color(242, 241, 239));
-        jProximaSala.setBorder(null);
         jProximaSala.setOpaque(false);
         jProximaSala.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +105,7 @@ public class MudancaSessao extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jProximaSala);
-        jProximaSala.setBounds(207, 321, 89, 24);
+        jProximaSala.setBounds(207, 321, 89, 30);
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(242, 241, 239));
@@ -127,10 +116,9 @@ public class MudancaSessao extends javax.swing.JFrame {
         jProximoHorario.setBackground(new java.awt.Color(37, 116, 169));
         jProximoHorario.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jProximoHorario.setForeground(new java.awt.Color(242, 241, 239));
-        jProximoHorario.setBorder(null);
         jProximoHorario.setOpaque(false);
         getContentPane().add(jProximoHorario);
-        jProximoHorario.setBounds(392, 321, 86, 24);
+        jProximoHorario.setBounds(392, 321, 86, 30);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(242, 241, 239));
@@ -141,12 +129,11 @@ public class MudancaSessao extends javax.swing.JFrame {
         jcodigoAtual.setBackground(new java.awt.Color(37, 116, 169));
         jcodigoAtual.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jcodigoAtual.setForeground(new java.awt.Color(242, 241, 239));
-        jcodigoAtual.setBorder(null);
         jcodigoAtual.setOpaque(false);
         getContentPane().add(jcodigoAtual);
         jcodigoAtual.setBounds(228, 179, 250, 30);
 
-        jtrocaricon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/mudar.png"))); // NOI18N
+        jtrocaricon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mudar.png"))); // NOI18N
         getContentPane().add(jtrocaricon);
         jtrocaricon.setBounds(510, 410, 40, 70);
 
@@ -164,7 +151,7 @@ public class MudancaSessao extends javax.swing.JFrame {
         getContentPane().add(jTrocar);
         jTrocar.setBounds(530, 430, 85, 33);
 
-        jcancelaicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/remover.png"))); // NOI18N
+        jcancelaicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sair.png"))); // NOI18N
         getContentPane().add(jcancelaicon);
         jcancelaicon.setBounds(20, 410, 50, 70);
 
@@ -203,49 +190,84 @@ public class MudancaSessao extends javax.swing.JFrame {
         jSeparator5.setBounds(80, 360, 470, 10);
 
         jbackground.setForeground(new java.awt.Color(242, 241, 239));
-        jbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/background 4.png"))); // NOI18N
+        jbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background 4.png"))); // NOI18N
         getContentPane().add(jbackground);
         jbackground.setBounds(0, 0, 640, 480);
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTrocarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTrocarActionPerformed
         // TODO add your handling code here:
-        String codigo=jcodigoAtual.getText();
+        SessaoDAO Sbanco=new SessaoDAO();
+        IngressoDAO Ibanco=new IngressoDAO();
         
-        Reembolso r=new Reembolso();
-         
-        String cads=r.getSessaoCodigoCadeira(codigo).get(1).toString();
-        Sessao sessao=(Sessao)r.getSessaoCodigoCadeira(codigo).get(0);
+        Sessao sessaoAnterior=new Sessao();
         
-        Ibanco.deleteI(codigo);
-        Sbanco.atualizarCadeiras(cads, sessao.getSala(), sessao.getHorario());
+        String codigoAntigo=jcodigoAtual.getText();
         
-        String sessaoS="";
-        for(int i=0;i<filmes.size();i++){
-            if(filmes.get(i).contains(jProximoHorario.getText())){
-                sessaoS=filmes.get(i);
+        String nomeCadAntigo=codigoAntigo.substring(0, codigoAntigo.length()-9);
+        System.out.println("Nome:"+nomeCadAntigo);
+        String salaAntiga=codigoAntigo.substring(codigoAntigo.length()-9,codigoAntigo.length()-8);
+        
+        String horarioAntigo=codigoAntigo.substring(codigoAntigo.length()-8,codigoAntigo.length()-6) + ":" + codigoAntigo.substring(codigoAntigo.length()-6,codigoAntigo.length()-4);
+        System.out.println("");
+        for(int i=0;i<sessoes.size();i++){
+            if(sessoes.get(i).getSala().equals(salaAntiga) && sessoes.get(i).getHorario().equals(horarioAntigo)){
+                System.out.println("ENTORU");
+                sessaoAnterior=sessoes.get(i);
             }
         }
-        
         Sessao sessaoProx=new Sessao();
         for(int i=0;i<sessoes.size();i++){
             if(sessoes.get(i).getSala().equals(jProximaSala.getText()) && sessoes.get(i).getHorario().equals(jProximoHorario.getText())){
                 sessaoProx=sessoes.get(i);
             }
         }
-        
-        Comprar inputDados=new Comprar();
-        JButton confirmar=inputDados.getConfirmar();
-        
-        String proxHorario=jProximoHorario.getText();
-        String proxSala=jProximaSala.getText();
-        
-        inputDados.atualizarComprar(sessoes,sessaoS, proxHorario, proxSala, sessaoProx);
-        inputDados.setVisible(true);
-        
+        if(sessaoAnterior.getSala().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Existe algum erro no codigo digitado");
+        }else{
+           Ibanco.deleteI(codigoAntigo);
+           String cadeiraCompeta = "cad"+nomeCadAntigo;
+           System.out.println("CADEIRACOMPLETA:"+cadeiraCompeta);
+           char ultimoDigitodaCad;
+           if(nomeCadAntigo.length()>1){
+               ultimoDigitodaCad=nomeCadAntigo.charAt(1);
+           }else{
+               ultimoDigitodaCad=nomeCadAntigo.charAt(0);
+           }
+           Cadeira c=new Cadeira();
+           String cads=Sbanco.verC(salaAntiga, horarioAntigo);
+           int tamanho=cads.length();
+           int indexfim=0;
+           for(int i=0;i<cads.length();i++){
+               
+               if(cads.charAt(i)==ultimoDigitodaCad && (cads.charAt(i+1)==',' || cads.charAt(i+1)==',')){
+                   indexfim=i;
+               }
+           }
+           String sessaoS="";
+           for(int i=0;i<filmes.size();i++){
+               if(filmes.get(i).contains(jProximoHorario.getText())){
+                   sessaoS=filmes.get(i);
+               }
+           }
+            System.out.println("Sessao sTRING:"+sessaoS);
+           if(nomeCadAntigo.length()>1){
+               cads=cads.substring(0, indexfim-4)+cads.substring(indexfim+3, tamanho);
+           }else{
+               cads=cads.substring(0, indexfim-3)+cads.substring(indexfim+3, tamanho);
+           }
+            System.out.println("CADS:"+cads);
+            Sbanco.analisarCadeira(cads, salaAntiga, horarioAntigo);
+            Comprar inputDados=new Comprar();
+            JButton confirmar=inputDados.getConfirmar();
+            String proxHorario=jProximoHorario.getText();
+            String proxSala=jProximaSala.getText();
+            inputDados.recebendo(sessoes,sessaoS, proxHorario, proxSala, sessaoProx);
+            inputDados.setVisible(true);
+        }
+        MudancaSessao.this.dispose();
         
     }//GEN-LAST:event_jTrocarActionPerformed
 
@@ -289,7 +311,7 @@ public class MudancaSessao extends javax.swing.JFrame {
             public void run() {
                 MudancaSessao m = new MudancaSessao();
                 m.setVisible(true);
-                m.setSize(640,480);
+                m.setSize(640, 480);
                 m.setResizable(false);
                 m.setLocationRelativeTo(null);
             }
