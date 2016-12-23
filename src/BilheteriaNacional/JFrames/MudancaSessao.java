@@ -54,13 +54,15 @@ public class MudancaSessao extends javax.swing.JFrame {
         jProximoHorario5 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jProximoHorario8 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jassessaotitulo = new javax.swing.JLabel();
+        jpsessaotitulo = new javax.swing.JLabel();
+        jProximaSalatitulo = new javax.swing.JLabel();
         jProximaSala = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        jProximoDiatitulo = new javax.swing.JLabel();
+        jProximoDia = new javax.swing.JTextField();
+        jProximoHorariotitulo = new javax.swing.JLabel();
         jProximoHorario = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jcodigoAtualtitulo = new javax.swing.JLabel();
         jcodigoAtual = new javax.swing.JTextField();
         jtrocaricon = new javax.swing.JLabel();
         jTrocar = new javax.swing.JButton();
@@ -73,13 +75,6 @@ public class MudancaSessao extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jbackground = new javax.swing.JLabel();
-        jProximoHorario1 = new javax.swing.JTextField();
-        jProximoHorario2 = new javax.swing.JTextField();
-        jProximoHorario3 = new javax.swing.JTextField();
-        jProximoHorario6 = new javax.swing.JTextField();
-        jProximoHorario7 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jProximoHorario9 = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,23 +130,23 @@ public class MudancaSessao extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(242, 241, 239));
-        jLabel1.setText("Sessão Atual:");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(162, 149, 110, 24);
+        jassessaotitulo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jassessaotitulo.setForeground(new java.awt.Color(242, 241, 239));
+        jassessaotitulo.setText("Sessão Atual:");
+        getContentPane().add(jassessaotitulo);
+        jassessaotitulo.setBounds(162, 149, 110, 24);
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(242, 241, 239));
-        jLabel5.setText("Próxima Sessão:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(160, 290, 134, 24);
+        jpsessaotitulo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jpsessaotitulo.setForeground(new java.awt.Color(242, 241, 239));
+        jpsessaotitulo.setText("Próxima Sessão:");
+        getContentPane().add(jpsessaotitulo);
+        jpsessaotitulo.setBounds(160, 290, 134, 24);
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(242, 241, 239));
-        jLabel6.setText("Sala:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(160, 320, 41, 30);
+        jProximaSalatitulo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jProximaSalatitulo.setForeground(new java.awt.Color(242, 241, 239));
+        jProximaSalatitulo.setText("Sala:");
+        getContentPane().add(jProximaSalatitulo);
+        jProximaSalatitulo.setBounds(160, 320, 41, 30);
 
         jProximaSala.setBackground(new java.awt.Color(37, 116, 169));
         jProximaSala.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -164,13 +159,32 @@ public class MudancaSessao extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jProximaSala);
-        jProximaSala.setBounds(207, 321, 89, 24);
+        jProximaSala.setBounds(207, 321, 60, 24);
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(242, 241, 239));
-        jLabel7.setText("Horário:");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(324, 318, 64, 30);
+        jProximoDiatitulo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jProximoDiatitulo.setForeground(new java.awt.Color(242, 241, 239));
+        jProximoDiatitulo.setText("Dia:");
+        getContentPane().add(jProximoDiatitulo);
+        jProximoDiatitulo.setBounds(420, 320, 32, 30);
+
+        jProximoDia.setBackground(new java.awt.Color(37, 116, 169));
+        jProximoDia.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jProximoDia.setForeground(new java.awt.Color(242, 241, 239));
+        jProximoDia.setBorder(null);
+        jProximoDia.setOpaque(false);
+        jProximoDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jProximoDiaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jProximoDia);
+        jProximoDia.setBounds(460, 320, 60, 24);
+
+        jProximoHorariotitulo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jProximoHorariotitulo.setForeground(new java.awt.Color(242, 241, 239));
+        jProximoHorariotitulo.setText("Horário:");
+        getContentPane().add(jProximoHorariotitulo);
+        jProximoHorariotitulo.setBounds(280, 320, 64, 30);
 
         jProximoHorario.setBackground(new java.awt.Color(37, 116, 169));
         jProximoHorario.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -183,13 +197,13 @@ public class MudancaSessao extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jProximoHorario);
-        jProximoHorario.setBounds(392, 321, 86, 24);
+        jProximoHorario.setBounds(350, 320, 60, 24);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(242, 241, 239));
-        jLabel2.setText("Código:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(162, 176, 62, 30);
+        jcodigoAtualtitulo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jcodigoAtualtitulo.setForeground(new java.awt.Color(242, 241, 239));
+        jcodigoAtualtitulo.setText("Código:");
+        getContentPane().add(jcodigoAtualtitulo);
+        jcodigoAtualtitulo.setBounds(162, 176, 62, 30);
 
         jcodigoAtual.setBackground(new java.awt.Color(37, 116, 169));
         jcodigoAtual.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -215,7 +229,7 @@ public class MudancaSessao extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTrocar);
-        jTrocar.setBounds(530, 430, 87, 33);
+        jTrocar.setBounds(530, 430, 85, 33);
 
         jcancelaicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/remover.png"))); // NOI18N
         getContentPane().add(jcancelaicon);
@@ -233,7 +247,7 @@ public class MudancaSessao extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jCancela);
-        jCancela.setBounds(40, 430, 107, 33);
+        jCancela.setBounds(40, 430, 105, 33);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 45)); // NOI18N
@@ -253,86 +267,12 @@ public class MudancaSessao extends javax.swing.JFrame {
         getContentPane().add(jSeparator4);
         jSeparator4.setBounds(80, 280, 470, 10);
         getContentPane().add(jSeparator5);
-        jSeparator5.setBounds(80, 360, 470, 10);
+        jSeparator5.setBounds(90, 360, 470, 10);
 
         jbackground.setForeground(new java.awt.Color(242, 241, 239));
         jbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/background 4.png"))); // NOI18N
         getContentPane().add(jbackground);
         jbackground.setBounds(0, 0, 640, 480);
-
-        jProximoHorario1.setBackground(new java.awt.Color(37, 116, 169));
-        jProximoHorario1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jProximoHorario1.setForeground(new java.awt.Color(242, 241, 239));
-        jProximoHorario1.setBorder(null);
-        jProximoHorario1.setOpaque(false);
-        getContentPane().add(jProximoHorario1);
-        jProximoHorario1.setBounds(392, 321, 86, 24);
-
-        jProximoHorario2.setBackground(new java.awt.Color(37, 116, 169));
-        jProximoHorario2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jProximoHorario2.setForeground(new java.awt.Color(242, 241, 239));
-        jProximoHorario2.setBorder(null);
-        jProximoHorario2.setOpaque(false);
-        getContentPane().add(jProximoHorario2);
-        jProximoHorario2.setBounds(392, 321, 86, 24);
-
-        jProximoHorario3.setBackground(new java.awt.Color(37, 116, 169));
-        jProximoHorario3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jProximoHorario3.setForeground(new java.awt.Color(242, 241, 239));
-        jProximoHorario3.setBorder(null);
-        jProximoHorario3.setOpaque(false);
-        jProximoHorario3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jProximoHorario3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jProximoHorario3);
-        jProximoHorario3.setBounds(392, 321, 86, 24);
-
-        jProximoHorario6.setBackground(new java.awt.Color(37, 116, 169));
-        jProximoHorario6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jProximoHorario6.setForeground(new java.awt.Color(242, 241, 239));
-        jProximoHorario6.setBorder(null);
-        jProximoHorario6.setOpaque(false);
-        jProximoHorario6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jProximoHorario6ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jProximoHorario6);
-        jProximoHorario6.setBounds(392, 321, 86, 24);
-
-        jProximoHorario7.setBackground(new java.awt.Color(37, 116, 169));
-        jProximoHorario7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jProximoHorario7.setForeground(new java.awt.Color(242, 241, 239));
-        jProximoHorario7.setBorder(null);
-        jProximoHorario7.setOpaque(false);
-        jProximoHorario7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jProximoHorario7ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jProximoHorario7);
-        jProximoHorario7.setBounds(392, 321, 86, 24);
-
-        jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(242, 241, 239));
-        jLabel9.setText("Dia:");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(480, 320, 32, 30);
-
-        jProximoHorario9.setBackground(new java.awt.Color(37, 116, 169));
-        jProximoHorario9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jProximoHorario9.setForeground(new java.awt.Color(242, 241, 239));
-        jProximoHorario9.setBorder(null);
-        jProximoHorario9.setOpaque(false);
-        jProximoHorario9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jProximoHorario9ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jProximoHorario9);
-        jProximoHorario9.setBounds(520, 330, 86, 24);
 
         pack();
         setLocationRelativeTo(null);
@@ -373,7 +313,7 @@ public class MudancaSessao extends javax.swing.JFrame {
         String proxHorario=jProximoHorario.getText();
         String proxSala=jProximaSala.getText();
         String proxDia=jProximoDia.getText();
-        inputDados.atualizarComprar(sessoes,sessaoS, proxHorario, proxSala, sessaoProx,b proxDia);
+        inputDados.atualizarComprar(sessoes,sessaoS, proxHorario, proxSala, sessaoProx, proxDia);
         inputDados.setVisible(true);
         
         
@@ -391,10 +331,6 @@ public class MudancaSessao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jProximoHorarioActionPerformed
 
-    private void jProximoHorario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProximoHorario3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jProximoHorario3ActionPerformed
-
     private void jProximoHorario4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProximoHorario4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jProximoHorario4ActionPerformed
@@ -403,21 +339,13 @@ public class MudancaSessao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jProximoHorario5ActionPerformed
 
-    private void jProximoHorario6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProximoHorario6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jProximoHorario6ActionPerformed
-
-    private void jProximoHorario7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProximoHorario7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jProximoHorario7ActionPerformed
-
     private void jProximoHorario8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProximoHorario8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jProximoHorario8ActionPerformed
 
-    private void jProximoHorario9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProximoHorario9ActionPerformed
+    private void jProximoDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProximoDiaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jProximoHorario9ActionPerformed
+    }//GEN-LAST:event_jProximoDiaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -460,35 +388,30 @@ public class MudancaSessao extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jCancela;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jProximaSala;
+    private javax.swing.JLabel jProximaSalatitulo;
+    private javax.swing.JTextField jProximoDia;
+    private javax.swing.JLabel jProximoDiatitulo;
     private javax.swing.JTextField jProximoHorario;
-    private javax.swing.JTextField jProximoHorario1;
-    private javax.swing.JTextField jProximoHorario2;
-    private javax.swing.JTextField jProximoHorario3;
     private javax.swing.JTextField jProximoHorario4;
     private javax.swing.JTextField jProximoHorario5;
-    private javax.swing.JTextField jProximoHorario6;
-    private javax.swing.JTextField jProximoHorario7;
     private javax.swing.JTextField jProximoHorario8;
-    private javax.swing.JTextField jProximoHorario9;
+    private javax.swing.JLabel jProximoHorariotitulo;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JButton jTrocar;
+    private javax.swing.JLabel jassessaotitulo;
     private javax.swing.JLabel jbackground;
     private javax.swing.JLabel jcancelaicon;
     private javax.swing.JTextField jcodigoAtual;
+    private javax.swing.JLabel jcodigoAtualtitulo;
+    private javax.swing.JLabel jpsessaotitulo;
     private javax.swing.JLabel jtrocaricon;
     // End of variables declaration//GEN-END:variables
 }
