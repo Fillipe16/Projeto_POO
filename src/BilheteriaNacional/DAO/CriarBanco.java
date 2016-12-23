@@ -22,6 +22,7 @@ public class CriarBanco {
 "	data_filme varchar(10) not null,\n" +
 "    cadeira varchar(5) not null,\n" +
 "    sala varchar(3) not null,\n" +
+"    dia varchar(20) not null,\n" +
 "	filme varchar(100) not null,\n" +
 "    preco double not null\n" +
 ");";
