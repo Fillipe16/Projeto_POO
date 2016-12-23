@@ -132,7 +132,7 @@ public class Sessao {
         return null;
     }
     public String toString(){
-        return "Horario:"+horario+",Sala:"+sala;
+        return "Horario:"+horario+",Sala:"+sala+",Dia:"+dia;
     }
     
 }

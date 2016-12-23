@@ -283,7 +283,9 @@ public class MudancaSessao extends javax.swing.JFrame {
         String codigo=jcodigoAtual.getText();
         
         Reembolso r=new Reembolso();
-         
+        
+        r.recebendo(sessoes);
+        
         String cads=r.getSessaoCodigoCadeira(codigo).get(1).toString();
         
         Sessao sessao=(Sessao)r.getSessaoCodigoCadeira(codigo).get(0);
