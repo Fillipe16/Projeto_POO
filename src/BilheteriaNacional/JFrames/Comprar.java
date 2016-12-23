@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -39,6 +40,11 @@ public class Comprar extends javax.swing.JFrame {
     
     Sessao s;
     
+    int quantidadeCadeirasDisponiveis;
+    
+    public void atualizarQuantidadeCadLivres(int qtd){
+        this.quantidadeCadeirasDisponiveis=qtd;
+    }
     public void atualizarComprar(ArrayList<Sessao> sessoes,String sessao,String horario,String sala,Sessao s,String d){
         this.sessoes=sessoes;
         this.sessao=sessao;
@@ -46,9 +52,7 @@ public class Comprar extends javax.swing.JFrame {
         this.horario=horario;
         this.s=s;
         this.dia=d;
-        
-        System.out.println("DIIAAA:"+dia);
-        
+              
         jsessao.setText(sessao);
         
         cadeirasSessao=Sbanco.verC(sala,horario,dia);
@@ -708,340 +712,496 @@ public class Comprar extends javax.swing.JFrame {
 
     private void cad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad1ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(0).getEstado();
-      
-        if(aux==1){
-            cad1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad1");
-        }
-        else if(aux==-1){
-            cad1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad1");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(0).getEstado();
+
+            if(aux==1){
+                cad1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad1");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad1");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad1ActionPerformed
 
     private void cad4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad4ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(3).getEstado();
-        if(aux==1){
-            cad4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad4");
-        }
-        else if(aux==-1){
-            cad4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad4");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(3).getEstado();
+            if(aux==1){
+                cad4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad4");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad4");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad4ActionPerformed
 
     private void cad2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad2ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(1).getEstado();
-        if(aux==1){
-            cad2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad2");
-        }
-        else if(aux==-1){
-            cad2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad2");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(1).getEstado();
+            if(aux==1){
+                cad2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad2");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad2");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad2ActionPerformed
 
     private void cad6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad6ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(5).getEstado();
-        if(aux==1){
-            cad6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad6");
-        }
-        else if(aux==-1){
-            cad6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad6");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(5).getEstado();
+            if(aux==1){
+                cad6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad6");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad6");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad6ActionPerformed
 
     private void cad7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad7ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(6).getEstado();
-        if(aux==1){
-            cad7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad7");
-        }
-        else if(aux==-1){
-            cad7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad7");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(6).getEstado();
+            if(aux==1){
+                cad7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad7");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad7");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad7ActionPerformed
 
     private void cad5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad5ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(4).getEstado();
-        if(aux==1){
-            cad5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad5");
-        }
-        else if(aux==-1){
-            cad5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad5");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(4).getEstado();
+            if(aux==1){
+                cad5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad5");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad5");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad5ActionPerformed
 
     private void cad8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad8ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(7).getEstado();
-        if(aux==1){
-            cad8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad8");
-        }
-        else if(aux==-1){
-            cad8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad8");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(7).getEstado();
+            if(aux==1){
+                cad8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad8");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad8");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad8ActionPerformed
 
     private void cad9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad9ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(8).getEstado();
-        if(aux==1){
-            cad9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad9");
-        }
-        else if(aux==-1){
-            cad9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad9");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(8).getEstado();
+            if(aux==1){
+                cad9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad9");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad9");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad9ActionPerformed
 
     private void cad11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad11ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(10).getEstado();
-        if(aux==1){
-            cad11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad11");
-        }
-        else if(aux==-1){
-            cad11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad11");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(10).getEstado();
+            if(aux==1){
+                cad11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad11");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad11");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad11ActionPerformed
 
     private void cad12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad12ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(11).getEstado();
-        if(aux==1){
-            cad12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad12");
-        }
-        else if(aux==-1){
-            cad12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad12");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(11).getEstado();
+            if(aux==1){
+                cad12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad12");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad12");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad12ActionPerformed
 
     private void cad14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad14ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(13).getEstado();
-        if(aux==1){
-            cad14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad14");
-        }
-        else if(aux==-1){
-            cad14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad14");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(13).getEstado();
+            if(aux==1){
+                cad14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad14");
+                quantidadeCadeirasDisponiveis++;
+            }
+            else if(aux==-1){
+                cad14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad14");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad14ActionPerformed
 
     private void cad15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad15ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(14).getEstado();
-        if(aux==1){
-            cad15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad15");
-        }
-        else if(aux==-1){
-            cad15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad15");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(14).getEstado();
+            if(aux==1){
+                cad15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad15");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad15");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad15ActionPerformed
 
     private void cad10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad10ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(9).getEstado();
-        if(aux==1){
-            cad10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad10");
-        }
-        else if(aux==-1){
-            cad10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad10");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(9).getEstado();
+            if(aux==1){
+                cad10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad10");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad10");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad10ActionPerformed
 
     private void cad13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad13ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(12).getEstado();
-        if(aux==1){
-            cad13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad13");
-        }
-        else if(aux==-1){
-            cad13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad13");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(12).getEstado();
+            if(aux==1){
+                cad13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad13");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad13");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad13ActionPerformed
 
     private void cad16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad16ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(15).getEstado();
-        if(aux==1){
-            cad16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad16");
-        }
-        else if(aux==-1){
-            cad16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad16");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(15).getEstado();
+            if(aux==1){
+                cad16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad16");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad16");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad16ActionPerformed
 
     private void cad17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad17ActionPerformed
         // TODO add your handling code here:
-         int aux=s.getCadeiras().get(16).getEstado();
-        if(aux==1){
-            cad17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad17");
-        }
-        else if(aux==-1){
-            cad17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad17");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(16).getEstado();
+            if(aux==1){
+                cad17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad17");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad17");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad17ActionPerformed
 
     private void cad18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad18ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(17).getEstado();
-        if(aux==1){
-            cad18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad18");
-        }
-        else if(aux==-1){
-            cad18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad18");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(17).getEstado();
+            if(aux==1){
+                cad18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad18");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad18");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad18ActionPerformed
 
     private void cad3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad3ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(2).getEstado();
-        if(aux==1){
-            cad3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad3");
-        }
-        else if(aux==-1){
-            cad3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad3");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(2).getEstado();
+            if(aux==1){
+                cad3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad3");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad3");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad3ActionPerformed
 
     private void cad19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad19ActionPerformed
         // TODO add your handling code here:
-       int aux=s.getCadeiras().get(18).getEstado();
-        if(aux==1){
-            cad19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad19");
-        }
-        else if(aux==-1){
-            cad19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad19");
+       if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(18).getEstado();
+            if(aux==1){
+                cad19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad19");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad19");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad19ActionPerformed
 
     private void cad20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad20ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(19).getEstado();
-        if(aux==1){
-            cad20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad20");
-        }
-        else if(aux==-1){
-            cad20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad20");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(19).getEstado();
+            if(aux==1){
+                cad20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad20");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad20");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad20ActionPerformed
 
     private void cad21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad21ActionPerformed
         // TODO add your handling code here:
-         int aux=s.getCadeiras().get(20).getEstado();
-        if(aux==1){
-            cad21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad21");
-        }
-        else if(aux==-1){
-            cad21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad21");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(20).getEstado();
+            if(aux==1){
+                cad21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad21");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad21");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad21ActionPerformed
 
     private void cad22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad22ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(21).getEstado();
-        if(aux==1){
-            cad22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad22");
-        }
-        else if(aux==-1){
-            cad22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad22");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(21).getEstado();
+            if(aux==1){
+                cad22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad22");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad22");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad22ActionPerformed
 
     private void cad23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad23ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(22).getEstado();
-        if(aux==1){
-            cad23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad23");
-        }
-        else if(aux==-1){
-            cad23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad23");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(22).getEstado();
+            if(aux==1){
+                cad23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad23");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad23");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad23ActionPerformed
 
     private void cad24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad24ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(23).getEstado();
-        if(aux==1){
-            cad24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad24");
-        }
-        else if(aux==-1){
-            cad24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad24");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(23).getEstado();
+            if(aux==1){
+                cad24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad24");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad24");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad24ActionPerformed
 
     private void cad25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad25ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(24).getEstado();
-        if(aux==1){
-            cad25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad25");
-        }
-        else if(aux==-1){
-            cad25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad25");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(24).getEstado();
+            if(aux==1){
+                cad25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad25");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad25");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad25ActionPerformed
 
     private void cad26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad26ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(25).getEstado();
-        if(aux==1){
-            cad26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
-            s.selecionar("cad26");
-        }
-        else if(aux==-1){
-            cad26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-            s.selecionar("cad26");
+        if(quantidadeCadeirasDisponiveis==0){
+            JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
+        }else{
+            int aux=s.getCadeiras().get(25).getEstado();
+            if(aux==1){
+                cad26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
+                s.selecionar("cad26");
+                quantidadeCadeirasDisponiveis--;
+            }
+            else if(aux==-1){
+                cad26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
+                s.selecionar("cad26");
+                quantidadeCadeirasDisponiveis++;
+            }
         }
     }//GEN-LAST:event_cad26ActionPerformed
 

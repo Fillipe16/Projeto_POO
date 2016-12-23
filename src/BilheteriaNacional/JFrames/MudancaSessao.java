@@ -35,6 +35,9 @@ public class MudancaSessao extends javax.swing.JFrame {
         this.filmes=f;
         this.sessoes=s;
     }
+    public void getQuantidadeCadTrocar(){
+        
+    }
     
     public MudancaSessao() {
         initComponents();
@@ -280,19 +283,17 @@ public class MudancaSessao extends javax.swing.JFrame {
 
     private void jTrocarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTrocarActionPerformed
         // TODO add your handling code here:
-        String codigo=jcodigoAtual.getText();
+        String codigos=jcodigoAtual.getText();
         
         Reembolso r=new Reembolso();
         
         r.recebendo(sessoes);
         
-        String cads=r.getSessaoCodigoCadeira(codigo).get(1).toString();
+        String cads=r.getSessaoCodigoCadeira(codigos).get(1).toString();
         
-        Sessao sessao=(Sessao)r.getSessaoCodigoCadeira(codigo).get(0);
-        
-        System.out.println("Cadeiras:"+sessao);
-        
-        Ibanco.deleteI(codigo);
+        Sessao sessao=(Sessao)r.getSessaoCodigoCadeira(codigos).get(0);
+               
+        Ibanco.deleteI(codigos);
         Sbanco.atualizarCadeiras(cads, sessao.getSala(), sessao.getHorario(), sessao.getDia());
         
         String sessaoS="";
@@ -315,6 +316,8 @@ public class MudancaSessao extends javax.swing.JFrame {
         String proxHorario=jProximoHorario.getText();
         String proxSala=jProximaSala.getText();
         String proxDia=jProximoDia.getText();
+        
+        //inputDados.atualizarQuantidadeCadLivres();
         inputDados.atualizarComprar(sessoes,sessaoS, proxHorario, proxSala, sessaoProx, proxDia);
         inputDados.setVisible(true);
         

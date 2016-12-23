@@ -30,9 +30,10 @@ public class Reembolso extends javax.swing.JFrame {
     public void recebendo(ArrayList<Sessao> s){
         sessoes=s;
     }
-    
+   /* public ArrayList<String> getCadeirasOcupadasPorCodigos(String codigos){
+        ArrayLis<String>
+    }*/
     public ArrayList<Object> getSessaoCodigoCadeira(String codigo){
-        System.out.println("CHAMOU");
         
         Sessao sessao=new Sessao();
         
@@ -45,30 +46,23 @@ public class Reembolso extends javax.swing.JFrame {
         String horario=codigo.substring(codigo.length()-12,codigo.length()-10) + ":" + codigo.substring(codigo.length()-10,codigo.length()-8);
         
         String dia=codigo.substring(codigo.length()-8,codigo.length()-6) + "/" + codigo.substring(codigo.length()-6,codigo.length()-4);
-        System.out.println("SALA:"+sala);
-         System.out.println("HORARIO:"+horario);
-          System.out.println("DIA:"+dia);
-          
+       
         for(int i=0;i<sessoes.size();i++){
-            System.out.println("SESSAO "+i+": "+sessoes.get(i));
             if(sessoes.get(i).getSala().equals(sala) && sessoes.get(i).getHorario().equals(horario)&& sessoes.get(i).getDia().equals(dia)){
                 sessao=sessoes.get(i);
             }
         }
-        System.out.println("SSSEESSSAO:"+sessao);
+
         char ultimoDigitodaCad;
         
         if(nomeCad.length()>1){
-               ultimoDigitodaCad=nomeCad.charAt(1);
+            ultimoDigitodaCad=nomeCad.charAt(1);
         }else{
             ultimoDigitodaCad=nomeCad.charAt(0);
         }
-        
-        Cadeira c=new Cadeira();
-        
+                
         String cads=Sbanco.verC(sala, horario,dia);
         
-        System.out.println("CADEIRAS:"+cads);
         int tamanho=cads.length();
         int indexfim=0;
 

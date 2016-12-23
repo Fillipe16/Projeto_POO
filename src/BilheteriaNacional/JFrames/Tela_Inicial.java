@@ -286,6 +286,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
             comprar=new Comprar();
             comprar.setVisible(true);
+            comprar.atualizarQuantidadeCadLivres(27);
             comprar.atualizarComprar(sessoes,aux.toString(),horarioe,salae,se,jdias.getSelectedItem().toString());
         }
 
