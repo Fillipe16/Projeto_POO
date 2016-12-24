@@ -6,6 +6,7 @@ import BilheteriaNacional.Beans.Cadeira;
 import BilheteriaNacional.DAO.SessaoDAO;
 import BilheteriaNacional.DAO.IngressoDAO;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -30,77 +31,24 @@ public class Reembolso extends javax.swing.JFrame {
     public void recebendo(ArrayList<Sessao> s){
         sessoes=s;
     }
-   /* public ArrayList<String> getCadeirasOcupadasPorCodigos(String codigos){
-        ArrayLis<String>
-    }*/
-    public ArrayList<Object> getSessaoCodigoCadeira(String codigo){
+    public int removerCadeirasSessaoOcupadasPorCodigos(String Stringcodigos){
+        ArrayList<String> codigos;
+        codigos=new ArrayList(Arrays.asList(Stringcodigos.split(",")));
         
-        Sessao sessao=new Sessao();
+        for(int i=0;i<codigos.size();i++){
+            Ibanco.deleteI(codigos.get(i));
+            
+            String StringnomeCad=codigos.get(i).substring(0, codigos.get(i).length()-13);
+            String Stringsala=codigos.get(i).substring(codigos.get(i).length()-13,codigos.get(i).length()-12);
+            String Stringhorario=codigos.get(i).substring(codigos.get(i).length()-12,codigos.get(i).length()-10) + ":" + codigos.get(i).substring(codigos.get(i).length()-10,codigos.get(i).length()-8);
+            String Stringdia=codigos.get(i).substring(codigos.get(i).length()-8,codigos.get(i).length()-6) + "/" + codigos.get(i).substring(codigos.get(i).length()-6,codigos.get(i).length()-4);
         
-        ArrayList<Object> dados=new ArrayList();
-        
-        String nomeCad=codigo.substring(0, codigo.length()-13);
-        
-        String sala=codigo.substring(codigo.length()-13,codigo.length()-12);
-        
-        String horario=codigo.substring(codigo.length()-12,codigo.length()-10) + ":" + codigo.substring(codigo.length()-10,codigo.length()-8);
-        
-        String dia=codigo.substring(codigo.length()-8,codigo.length()-6) + "/" + codigo.substring(codigo.length()-6,codigo.length()-4);
-       
-        for(int i=0;i<sessoes.size();i++){
-            if(sessoes.get(i).getSala().equals(sala) && sessoes.get(i).getHorario().equals(horario)&& sessoes.get(i).getDia().equals(dia)){
-                sessao=sessoes.get(i);
-            }
-        }
-
-        char ultimoDigitodaCad;
-        
-        if(nomeCad.length()>1){
-            ultimoDigitodaCad=nomeCad.charAt(1);
-        }else{
-            ultimoDigitodaCad=nomeCad.charAt(0);
-        }
-                
-        String cads=Sbanco.verC(sala, horario,dia);
-        
-        int tamanho=cads.length();
-        int indexfim=0;
-
-        for(int i=0;i<cads.length();i++){
-
-            if(cads.charAt(i)==ultimoDigitodaCad && (cads.charAt(i+1)==',' ^ cads.charAt(i+1)==']')){
-                indexfim=i;
-            }
-        }
-
-        if(nomeCad.length()>1){
-            if(cads.charAt(indexfim+1)==']'){
-                cads=cads.substring(0, indexfim-6)+cads.substring(indexfim+1, tamanho);
-            }
-            else if(cads.charAt(indexfim-5)=='['){
-                cads=cads.substring(0, indexfim-4)+cads.substring(indexfim+3, tamanho);
-            }
-            else{
-                cads=cads.substring(0, indexfim-4)+cads.substring(indexfim+3, tamanho);
-            }
-        }else{
-            if(cads.charAt(indexfim+1)==']'){
-                cads=cads.substring(0, indexfim-5)+cads.substring(indexfim+1, tamanho);
-            }
-            else if(cads.charAt(indexfim-4)=='['){
-                cads=cads.substring(0, indexfim-3)+cads.substring(indexfim+3, tamanho);
-            }
-            else{
-                cads=cads.substring(0, indexfim-3)+cads.substring(indexfim+3, tamanho);
-            }
+            Sbanco.atualizarCadeirasTrocarSessao("cad"+StringnomeCad, Stringsala, Stringhorario, Stringdia);
         }
         
-        dados.add(sessao);
-        
-        dados.add(cads);
-        
-        return dados;
+        return codigos.size();
     }
+    
     public Reembolso() {
         initComponents();
     }
@@ -141,6 +89,7 @@ public class Reembolso extends javax.swing.JFrame {
         jcodigo.setBackground(new java.awt.Color(37, 116, 169));
         jcodigo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jcodigo.setForeground(new java.awt.Color(242, 241, 239));
+        jcodigo.setToolTipText("codigos separados por virgula.");
         jcodigo.setBorder(null);
         getContentPane().add(jcodigo);
         jcodigo.setBounds(110, 100, 330, 30);
@@ -161,7 +110,7 @@ public class Reembolso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jcancelar);
-        jcancelar.setBounds(50, 190, 105, 33);
+        jcancelar.setBounds(50, 190, 107, 33);
 
         jreembolsaricon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/validar.png"))); // NOI18N
         getContentPane().add(jreembolsaricon);
@@ -208,12 +157,7 @@ public class Reembolso extends javax.swing.JFrame {
         // TODO add your handling code here:
         String cod=jcodigo.getText();
         
-        Sessao sessao=(Sessao)getSessaoCodigoCadeira(cod).get(0);
-        
-        String cad=getSessaoCodigoCadeira(cod).get(1).toString();
-        
-        Ibanco.deleteI(cod);
-        Sbanco.atualizarCadeiras(cad, sessao.getSala(), sessao.getHorario(), sessao.getDia());
+        removerCadeirasSessaoOcupadasPorCodigos(cod);
         
         dispose();
     }//GEN-LAST:event_jreembolsarActionPerformed

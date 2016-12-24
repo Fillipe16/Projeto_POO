@@ -712,10 +712,11 @@ public class Comprar extends javax.swing.JFrame {
 
     private void cad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad1ActionPerformed
         // TODO add your handling code here:
+        int aux=s.getCadeiras().get(0).getEstado();
+        
         if(quantidadeCadeirasDisponiveis==0){
             JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
         }else{
-            int aux=s.getCadeiras().get(0).getEstado();
 
             if(aux==1){
                 cad1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
@@ -1206,7 +1207,7 @@ public class Comprar extends javax.swing.JFrame {
     }//GEN-LAST:event_cad26ActionPerformed
 
     private void jconfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jconfirmaActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:/
         String filme=Sessao.dados(sessao).get(2);
         
         int index_sala=Integer.parseInt(sala)-1;

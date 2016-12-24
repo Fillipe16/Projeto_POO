@@ -211,6 +211,7 @@ public class MudancaSessao extends javax.swing.JFrame {
         jcodigoAtual.setBackground(new java.awt.Color(37, 116, 169));
         jcodigoAtual.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jcodigoAtual.setForeground(new java.awt.Color(242, 241, 239));
+        jcodigoAtual.setToolTipText("codigos separados por virgula");
         jcodigoAtual.setBorder(null);
         jcodigoAtual.setOpaque(false);
         getContentPane().add(jcodigoAtual);
@@ -232,7 +233,7 @@ public class MudancaSessao extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTrocar);
-        jTrocar.setBounds(530, 430, 85, 33);
+        jTrocar.setBounds(530, 430, 87, 33);
 
         jcancelaicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/remover.png"))); // NOI18N
         getContentPane().add(jcancelaicon);
@@ -250,7 +251,7 @@ public class MudancaSessao extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jCancela);
-        jCancela.setBounds(40, 430, 105, 33);
+        jCancela.setBounds(40, 430, 107, 33);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 45)); // NOI18N
@@ -289,12 +290,7 @@ public class MudancaSessao extends javax.swing.JFrame {
         
         r.recebendo(sessoes);
         
-        String cads=r.getSessaoCodigoCadeira(codigos).get(1).toString();
-        
-        Sessao sessao=(Sessao)r.getSessaoCodigoCadeira(codigos).get(0);
-               
-        Ibanco.deleteI(codigos);
-        Sbanco.atualizarCadeiras(cads, sessao.getSala(), sessao.getHorario(), sessao.getDia());
+        int quantidadeCadeiras=r.removerCadeirasSessaoOcupadasPorCodigos(codigos);
         
         String sessaoS="";
         for(int i=0;i<filmes.size();i++){
@@ -317,11 +313,11 @@ public class MudancaSessao extends javax.swing.JFrame {
         String proxSala=jProximaSala.getText();
         String proxDia=jProximoDia.getText();
         
-        //inputDados.atualizarQuantidadeCadLivres();
+        inputDados.atualizarQuantidadeCadLivres(quantidadeCadeiras);
         inputDados.atualizarComprar(sessoes,sessaoS, proxHorario, proxSala, sessaoProx, proxDia);
         inputDados.setVisible(true);
         
-        
+        dispose();
     }//GEN-LAST:event_jTrocarActionPerformed
 
     private void jCancelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelaActionPerformed

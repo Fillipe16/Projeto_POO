@@ -72,6 +72,25 @@ public class SessaoDAO {
       }
       return cads;
     }
-   
+    public void atualizarCadeirasTrocarSessao(String cadeira,String sala,String horario,String dia){
+        try{
+            PreparedStatement stmt=conexao.prepareStatement("update sessao set cadeiras=replace(cadeiras,if(cadeiras like CONCAT('%',?,', %'),CONCAT(?,', '),CONCAT(', ',?)),'') where cadeiras like CONCAT('%',?,',%') or cadeiras like CONCAT('%',?,']%') and sala=? and horario=? and dia=?");
+            stmt.setString(1, cadeira);
+            stmt.setString(2, cadeira);
+            stmt.setString(3, cadeira);
+            stmt.setString(4, cadeira);
+            stmt.setString(5, cadeira);
+            stmt.setString(6, sala);
+            stmt.setString(7, horario);
+            stmt.setString(8, dia);
+            
+            stmt.execute();
+            stmt.close();
+             
+            System.out.println("Atualização nas cadeiras da troca realizada com sucesso");
+        }catch(SQLException ex){
+            System.out.println("Erro na atualização das cadeiras da troca");
+        }
+    }
      
 }
