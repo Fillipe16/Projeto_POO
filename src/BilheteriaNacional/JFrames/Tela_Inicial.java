@@ -2,6 +2,7 @@ package BilheteriaNacional.JFrames;
 
 
 import BilheteriaNacional.Beans.Sessao;
+import BilheteriaNacional.DAO.CriarBanco;
 import BilheteriaNacional.DAO.SessaoDAO;
 import java.util.ArrayList;
 import javax.swing.JButton;
@@ -73,11 +74,17 @@ public class Tela_Inicial extends javax.swing.JFrame {
         jdias.addItem(dias.get(1));
         
     }
+    
+    public void initBanco(){
+        CriarBanco b = new CriarBanco();
+        b.CriarTabelas();
+    }
     /**
      * Creates new form Tela_Inicial
      */
     public Tela_Inicial() {
         initComponents();
+        initBanco();
         initFilmes();
         initCadeiras();
         jlist.setListData(filmes.toArray());     
