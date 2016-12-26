@@ -124,18 +124,20 @@ public class ValidarIngresso extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jvalidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jvalidarActionPerformed
-        // TODO add your handling code here:
+    public void validar(String codigo){
         IngressoDAO Ibanco=new IngressoDAO();
-        
-        String cod=Ibanco.validarI(jcodigo.getText());
-        
+        String cod=Ibanco.validarI(codigo);
         if(!cod.equals("")){
             JOptionPane.showMessageDialog(rootPane, "Ingresso validado com sucesso");
         }else{
             JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro na validação do ingresso");
         }
+    }
+    private void jvalidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jvalidarActionPerformed
+        // TODO add your handling code here:
+        String codigo=jcodigo.getText();
+        
+        
         dispose();
     }//GEN-LAST:event_jvalidarActionPerformed
 

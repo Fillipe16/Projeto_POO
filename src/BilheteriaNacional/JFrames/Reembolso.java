@@ -7,6 +7,7 @@ import BilheteriaNacional.DAO.SessaoDAO;
 import BilheteriaNacional.DAO.IngressoDAO;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -36,6 +37,9 @@ public class Reembolso extends javax.swing.JFrame {
         codigos=new ArrayList(Arrays.asList(Stringcodigos.split(",")));
         
         for(int i=0;i<codigos.size();i++){
+            if(codigos.get(i).equals("")){
+                JOptionPane.showConfirmDialog(rootPane, codigos.get(i)+" invalido!");
+            }
             Ibanco.deleteI(codigos.get(i));
             
             String StringnomeCad=codigos.get(i).substring(0, codigos.get(i).length()-13);
