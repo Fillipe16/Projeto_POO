@@ -173,6 +173,7 @@ public class MudancaSessao extends javax.swing.JFrame {
         jProximoDia.setBackground(new java.awt.Color(37, 116, 169));
         jProximoDia.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jProximoDia.setForeground(new java.awt.Color(242, 241, 239));
+        jProximoDia.setText("dd/mm");
         jProximoDia.setBorder(null);
         jProximoDia.setOpaque(false);
         jProximoDia.addActionListener(new java.awt.event.ActionListener() {
@@ -192,6 +193,7 @@ public class MudancaSessao extends javax.swing.JFrame {
         jProximoHorario.setBackground(new java.awt.Color(37, 116, 169));
         jProximoHorario.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jProximoHorario.setForeground(new java.awt.Color(242, 241, 239));
+        jProximoHorario.setText("h/m");
         jProximoHorario.setBorder(null);
         jProximoHorario.setOpaque(false);
         jProximoHorario.addActionListener(new java.awt.event.ActionListener() {
@@ -233,7 +235,7 @@ public class MudancaSessao extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTrocar);
-        jTrocar.setBounds(530, 430, 87, 33);
+        jTrocar.setBounds(530, 430, 85, 33);
 
         jcancelaicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/remover.png"))); // NOI18N
         getContentPane().add(jcancelaicon);
@@ -251,7 +253,7 @@ public class MudancaSessao extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jCancela);
-        jCancela.setBounds(40, 430, 107, 33);
+        jCancela.setBounds(40, 430, 105, 33);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 45)); // NOI18N
@@ -286,36 +288,41 @@ public class MudancaSessao extends javax.swing.JFrame {
         // TODO add your handling code here:
         String codigos=jcodigoAtual.getText();
         
-        Reembolso r=new Reembolso();
-        
-        r.recebendo(sessoes);
-        
-        int quantidadeCadeiras=r.removerCadeirasSessaoOcupadasPorCodigos(codigos);
-        
-        String sessaoS="";
-        for(int i=0;i<filmes.size();i++){
-            if(filmes.get(i).contains(jProximoHorario.getText())){
-                sessaoS=filmes.get(i);
-            }
+        if(codigos.equals("")){
+            JOptionPane.showMessageDialog(null, "Código inválido.");
         }
+        else{
+            Reembolso r=new Reembolso();
         
-        Sessao sessaoProx=new Sessao();
-        for(int i=0;i<sessoes.size();i++){
-            if(sessoes.get(i).getSala().equals(jProximaSala.getText()) && sessoes.get(i).getHorario().equals(jProximoHorario.getText())){
-                sessaoProx=sessoes.get(i);
+            r.recebendo(sessoes);
+        
+            int quantidadeCadeiras=r.removerCadeirasSessaoOcupadasPorCodigos(codigos);
+        
+            String sessaoS="";
+            for(int i=0;i<filmes.size();i++){
+                if(filmes.get(i).contains(jProximoHorario.getText())){
+                    sessaoS=filmes.get(i);
+                }
             }
-        }
         
-        Comprar inputDados=new Comprar();
-        JButton confirmar=inputDados.getConfirmar();
+            Sessao sessaoProx=new Sessao();
+            for(int i=0;i<sessoes.size();i++){
+                if(sessoes.get(i).getSala().equals(jProximaSala.getText()) && sessoes.get(i).getHorario().equals(jProximoHorario.getText())){
+                    sessaoProx=sessoes.get(i);
+                }
+            }
         
-        String proxHorario=jProximoHorario.getText();
-        String proxSala=jProximaSala.getText();
-        String proxDia=jProximoDia.getText();
+            Comprar inputDados=new Comprar();
+            JButton confirmar=inputDados.getConfirmar();
         
-        inputDados.atualizarQuantidadeCadLivres(quantidadeCadeiras);
-        inputDados.atualizarComprar(sessoes,sessaoS, proxHorario, proxSala, sessaoProx, proxDia);
-        inputDados.setVisible(true);
+            String proxHorario=jProximoHorario.getText();
+            String proxSala=jProximaSala.getText();
+            String proxDia=jProximoDia.getText();
+        
+            inputDados.atualizarQuantidadeCadLivres(quantidadeCadeiras);
+            inputDados.atualizarComprar(sessoes,sessaoS, proxHorario, proxSala, sessaoProx, proxDia);
+            inputDados.setVisible(true);
+            }
         
         dispose();
     }//GEN-LAST:event_jTrocarActionPerformed
