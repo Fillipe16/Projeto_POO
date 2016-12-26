@@ -36,21 +36,24 @@ public class Reembolso extends javax.swing.JFrame {
         ArrayList<String> codigos;
         codigos=new ArrayList(Arrays.asList(Stringcodigos.split(",")));
         
+        int quantidadeCadeiras=codigos.size();
         for(int i=0;i<codigos.size();i++){
-            if(codigos.get(i).equals("")){
-                JOptionPane.showConfirmDialog(rootPane, codigos.get(i)+" invalido!");
+            if(Ibanco.validarI(codigos.get(i)).equals("")){
+                JOptionPane.showMessageDialog(rootPane, codigos.get(i)+" invalido!");
+                quantidadeCadeiras=0;
+            }else{
+                Ibanco.deleteI(codigos.get(i));
+
+                String StringnomeCad=codigos.get(i).substring(0, codigos.get(i).length()-13);
+                String Stringsala=codigos.get(i).substring(codigos.get(i).length()-13,codigos.get(i).length()-12);
+                String Stringhorario=codigos.get(i).substring(codigos.get(i).length()-12,codigos.get(i).length()-10) + ":" + codigos.get(i).substring(codigos.get(i).length()-10,codigos.get(i).length()-8);
+                String Stringdia=codigos.get(i).substring(codigos.get(i).length()-8,codigos.get(i).length()-6) + "/" + codigos.get(i).substring(codigos.get(i).length()-6,codigos.get(i).length()-4);
+
+                Sbanco.atualizarCadeirasTrocarSessao("cad"+StringnomeCad, Stringsala, Stringhorario, Stringdia);
             }
-            Ibanco.deleteI(codigos.get(i));
-            
-            String StringnomeCad=codigos.get(i).substring(0, codigos.get(i).length()-13);
-            String Stringsala=codigos.get(i).substring(codigos.get(i).length()-13,codigos.get(i).length()-12);
-            String Stringhorario=codigos.get(i).substring(codigos.get(i).length()-12,codigos.get(i).length()-10) + ":" + codigos.get(i).substring(codigos.get(i).length()-10,codigos.get(i).length()-8);
-            String Stringdia=codigos.get(i).substring(codigos.get(i).length()-8,codigos.get(i).length()-6) + "/" + codigos.get(i).substring(codigos.get(i).length()-6,codigos.get(i).length()-4);
-        
-            Sbanco.atualizarCadeirasTrocarSessao("cad"+StringnomeCad, Stringsala, Stringhorario, Stringdia);
         }
         
-        return codigos.size();
+        return quantidadeCadeiras;
     }
     
     public Reembolso() {

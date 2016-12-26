@@ -16,7 +16,6 @@ public class CriarBanco {
     public CriarBanco() {
         conexao=new ConexaoBanco().getConexao();
     }
-    String sql="create database bilheteria";
     
     String sql1="use bilheteria";
     
@@ -42,9 +41,6 @@ public class CriarBanco {
         PreparedStatement stmt = null;
         PreparedStatement stmt2 = null;
         try{
-            stmt = conexao.prepareStatement(sql);
-            stmt.execute(sql);
-            stmt.close(); 
             stmt = conexao.prepareStatement(sql1);
             stmt.execute(sql1);
             stmt.close();            
@@ -55,7 +51,6 @@ public class CriarBanco {
             stmt2.execute(sql3);
             stmt2.close();
             
-            ConexaoBanco.setUrl("jdbc:mysql://localhost/bilheteria");
         }catch(SQLException e){
             System.out.println("Erro na criacao de tabelas");
         }

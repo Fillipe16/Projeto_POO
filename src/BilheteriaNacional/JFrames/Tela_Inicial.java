@@ -305,7 +305,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
     private void jsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsairActionPerformed
         JOptionPane.showMessageDialog(null, "Volte sempre!");
-        dispose();
+        System.exit(0);
     }//GEN-LAST:event_jsairActionPerformed
 
     private void jvalidacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jvalidacaoActionPerformed

@@ -287,44 +287,49 @@ public class MudancaSessao extends javax.swing.JFrame {
     private void jTrocarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTrocarActionPerformed
         // TODO add your handling code here:
         String codigos=jcodigoAtual.getText();
-        
-        if(codigos.equals("")){
-            JOptionPane.showMessageDialog(null, "Código inválido.");
+            
+        Sessao sessaoProx=new Sessao();
+        for(int i=0;i<sessoes.size();i++){
+            if(sessoes.get(i).getSala().equals(jProximaSala.getText()) && sessoes.get(i).getHorario().equals(jProximoHorario.getText())){
+                sessaoProx=sessoes.get(i);
+            }
         }
-        else{
-            Reembolso r=new Reembolso();
         
-            r.recebendo(sessoes);
-        
-            int quantidadeCadeiras=r.removerCadeirasSessaoOcupadasPorCodigos(codigos);
-        
+        if(sessaoProx.getSala().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Sessao escolhida invalida!");
+        }else{
+            
             String sessaoS="";
             for(int i=0;i<filmes.size();i++){
                 if(filmes.get(i).contains(jProximoHorario.getText())){
                     sessaoS=filmes.get(i);
                 }
             }
-        
-            Sessao sessaoProx=new Sessao();
-            for(int i=0;i<sessoes.size();i++){
-                if(sessoes.get(i).getSala().equals(jProximaSala.getText()) && sessoes.get(i).getHorario().equals(jProximoHorario.getText())){
-                    sessaoProx=sessoes.get(i);
-                }
+
+            Reembolso r=new Reembolso();
+
+            r.recebendo(sessoes);
+
+            int quantidadeCadeiras=r.removerCadeirasSessaoOcupadasPorCodigos(codigos);
+            
+            if(quantidadeCadeiras!=0){
+                
+                Comprar inputDados=new Comprar();
+                JButton confirmar=inputDados.getConfirmar();
+
+                String proxHorario=jProximoHorario.getText();
+                String proxSala=jProximaSala.getText();
+                String proxDia=jProximoDia.getText();
+
+                inputDados.atualizarQuantidadeCadLivres(quantidadeCadeiras);
+                inputDados.atualizarComprar(sessoes,sessaoS, proxHorario, proxSala, sessaoProx, proxDia);
+                inputDados.setVisible(true);
+
+                dispose();
             }
+        }
         
-            Comprar inputDados=new Comprar();
-            JButton confirmar=inputDados.getConfirmar();
         
-            String proxHorario=jProximoHorario.getText();
-            String proxSala=jProximaSala.getText();
-            String proxDia=jProximoDia.getText();
-        
-            inputDados.atualizarQuantidadeCadLivres(quantidadeCadeiras);
-            inputDados.atualizarComprar(sessoes,sessaoS, proxHorario, proxSala, sessaoProx, proxDia);
-            inputDados.setVisible(true);
-            }
-        
-        dispose();
     }//GEN-LAST:event_jTrocarActionPerformed
 
     private void jCancelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelaActionPerformed
