@@ -16,8 +16,11 @@ public class CriarBanco {
     public CriarBanco() {
         conexao=new ConexaoBanco().getConexao();
     }
+    String sql="create database bilheteria";
     
-    String sql = "create table if not exists ingresso(\n" +
+    String sql1="use bilheteria";
+    
+    String sql2 = "create table if not exists ingresso(\n" +
 "	codigo varchar(50) primary key,\n" +
 "	data_filme varchar(10) not null,\n" +
 "    cadeira varchar(5) not null,\n" +
@@ -27,7 +30,7 @@ public class CriarBanco {
 "    preco double not null\n" +
 ");";
     
-    String sql2 = "create table if not exists sessao(\n" +
+    String sql3 = "create table if not exists sessao(\n" +
 "	sala varchar(2),\n" +
 "    horario varchar(10),\n" +
 "    cadeiras varchar(500),\n" +
@@ -41,12 +44,18 @@ public class CriarBanco {
         try{
             stmt = conexao.prepareStatement(sql);
             stmt.execute(sql);
+            stmt.close(); 
+            stmt = conexao.prepareStatement(sql1);
+            stmt.execute(sql1);
             stmt.close();            
-            System.out.println("ENTROU1");
             stmt2 = conexao.prepareStatement(sql2);
             stmt2.execute(sql2);
             stmt2.close();
-            System.out.println("ENTROU2");
+            stmt2 = conexao.prepareStatement(sql3);
+            stmt2.execute(sql3);
+            stmt2.close();
+            
+            ConexaoBanco.setUrl("jdbc:mysql://localhost/bilheteria");
         }catch(SQLException e){
             System.out.println("Erro na criacao de tabelas");
         }
