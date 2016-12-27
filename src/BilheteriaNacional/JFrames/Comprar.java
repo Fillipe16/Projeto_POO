@@ -268,6 +268,7 @@ public class Comprar extends javax.swing.JFrame {
 
         jLabelbackground = new javax.swing.JLabel();
         jlabeltitulo = new javax.swing.JLabel();
+        jtotaltitulo = new javax.swing.JLabel();
         jsessaotitulo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         cad1 = new javax.swing.JButton();
@@ -301,6 +302,7 @@ public class Comprar extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jcancelaicon = new javax.swing.JLabel();
         jcancela = new javax.swing.JButton();
+        jtotal = new javax.swing.JLabel();
         jsessao = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jbackground = new javax.swing.JLabel();
@@ -318,6 +320,12 @@ public class Comprar extends javax.swing.JFrame {
         getContentPane().add(jlabeltitulo);
         jlabeltitulo.setBounds(0, 10, 640, 60);
 
+        jtotaltitulo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtotaltitulo.setForeground(new java.awt.Color(242, 241, 239));
+        jtotaltitulo.setText("Total:");
+        getContentPane().add(jtotaltitulo);
+        jtotaltitulo.setBounds(120, 350, 46, 30);
+
         jsessaotitulo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jsessaotitulo.setForeground(new java.awt.Color(242, 241, 239));
         jsessaotitulo.setText("Sessão:");
@@ -326,12 +334,17 @@ public class Comprar extends javax.swing.JFrame {
 
         jSeparator1.setBackground(new java.awt.Color(242, 241, 239));
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(112, 190, 420, 10);
+        jSeparator1.setBounds(110, 180, 420, 10);
 
         cad1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad1.setContentAreaFilled(false);
         cad1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cad1.setFocusPainted(false);
+        cad1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cad1ActionPerformed(evt);
+            }
+        });
         cad1.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -341,13 +354,8 @@ public class Comprar extends javax.swing.JFrame {
                 cad1AncestorRemoved(evt);
             }
         });
-        cad1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cad1ActionPerformed(evt);
-            }
-        });
         getContentPane().add(cad1);
-        cad1.setBounds(180, 200, 40, 40);
+        cad1.setBounds(180, 190, 40, 40);
 
         cad4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad4.setContentAreaFilled(false);
@@ -359,7 +367,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad4);
-        cad4.setBounds(260, 200, 40, 40);
+        cad4.setBounds(260, 190, 40, 40);
 
         cad2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad2.setContentAreaFilled(false);
@@ -371,7 +379,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad2);
-        cad2.setBounds(220, 200, 40, 40);
+        cad2.setBounds(220, 190, 40, 40);
 
         cad6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad6.setContentAreaFilled(false);
@@ -383,7 +391,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad6);
-        cad6.setBounds(380, 200, 40, 40);
+        cad6.setBounds(380, 190, 40, 40);
 
         cad7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad7.setContentAreaFilled(false);
@@ -395,7 +403,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad7);
-        cad7.setBounds(340, 200, 40, 40);
+        cad7.setBounds(340, 190, 40, 40);
 
         cad5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad5.setContentAreaFilled(false);
@@ -407,7 +415,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad5);
-        cad5.setBounds(300, 200, 40, 40);
+        cad5.setBounds(300, 190, 40, 40);
 
         cad8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad8.setContentAreaFilled(false);
@@ -419,7 +427,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad8);
-        cad8.setBounds(420, 200, 40, 40);
+        cad8.setBounds(420, 190, 40, 40);
 
         cad9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad9.setContentAreaFilled(false);
@@ -431,7 +439,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad9);
-        cad9.setBounds(260, 240, 40, 40);
+        cad9.setBounds(260, 230, 40, 40);
 
         cad11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad11.setContentAreaFilled(false);
@@ -443,7 +451,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad11);
-        cad11.setBounds(340, 240, 40, 40);
+        cad11.setBounds(340, 230, 40, 40);
 
         cad12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad12.setContentAreaFilled(false);
@@ -455,7 +463,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad12);
-        cad12.setBounds(300, 240, 40, 40);
+        cad12.setBounds(300, 230, 40, 40);
 
         cad14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad14.setContentAreaFilled(false);
@@ -467,7 +475,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad14);
-        cad14.setBounds(420, 240, 40, 40);
+        cad14.setBounds(420, 230, 40, 40);
 
         cad15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad15.setContentAreaFilled(false);
@@ -479,7 +487,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad15);
-        cad15.setBounds(380, 240, 40, 40);
+        cad15.setBounds(380, 230, 40, 40);
 
         cad10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad10.setContentAreaFilled(false);
@@ -491,7 +499,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad10);
-        cad10.setBounds(260, 280, 40, 40);
+        cad10.setBounds(260, 270, 40, 40);
 
         cad13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad13.setContentAreaFilled(false);
@@ -503,7 +511,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad13);
-        cad13.setBounds(340, 280, 40, 40);
+        cad13.setBounds(340, 270, 40, 40);
 
         cad16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad16.setContentAreaFilled(false);
@@ -515,7 +523,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad16);
-        cad16.setBounds(300, 280, 40, 40);
+        cad16.setBounds(300, 270, 40, 40);
 
         cad17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad17.setContentAreaFilled(false);
@@ -527,7 +535,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad17);
-        cad17.setBounds(420, 280, 40, 40);
+        cad17.setBounds(420, 270, 40, 40);
 
         cad18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad18.setContentAreaFilled(false);
@@ -539,7 +547,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad18);
-        cad18.setBounds(380, 280, 40, 40);
+        cad18.setBounds(380, 270, 40, 40);
 
         cad3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad3.setContentAreaFilled(false);
@@ -551,7 +559,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad3);
-        cad3.setBounds(180, 320, 40, 40);
+        cad3.setBounds(180, 310, 40, 40);
 
         cad19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad19.setContentAreaFilled(false);
@@ -563,7 +571,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad19);
-        cad19.setBounds(260, 320, 40, 40);
+        cad19.setBounds(260, 310, 40, 40);
 
         cad20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad20.setContentAreaFilled(false);
@@ -575,7 +583,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad20);
-        cad20.setBounds(220, 320, 40, 40);
+        cad20.setBounds(220, 310, 40, 40);
 
         cad21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad21.setContentAreaFilled(false);
@@ -587,7 +595,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad21);
-        cad21.setBounds(380, 320, 40, 40);
+        cad21.setBounds(380, 310, 40, 40);
 
         cad22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad22.setContentAreaFilled(false);
@@ -599,7 +607,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad22);
-        cad22.setBounds(340, 320, 40, 40);
+        cad22.setBounds(340, 310, 40, 40);
 
         cad23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad23.setContentAreaFilled(false);
@@ -611,7 +619,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad23);
-        cad23.setBounds(300, 320, 40, 40);
+        cad23.setBounds(300, 310, 40, 40);
 
         cad24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad24.setContentAreaFilled(false);
@@ -623,7 +631,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad24);
-        cad24.setBounds(420, 320, 40, 40);
+        cad24.setBounds(420, 310, 40, 40);
 
         cad25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad25.setContentAreaFilled(false);
@@ -635,7 +643,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad25);
-        cad25.setBounds(220, 240, 40, 40);
+        cad25.setBounds(220, 230, 40, 40);
 
         cad26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png"))); // NOI18N
         cad26.setContentAreaFilled(false);
@@ -647,7 +655,7 @@ public class Comprar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cad26);
-        cad26.setBounds(220, 280, 40, 40);
+        cad26.setBounds(220, 270, 40, 40);
 
         jconfirmaicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/validar.png"))); // NOI18N
         getContentPane().add(jconfirmaicon);
@@ -670,7 +678,7 @@ public class Comprar extends javax.swing.JFrame {
 
         jSeparator2.setBackground(new java.awt.Color(242, 241, 239));
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(110, 370, 420, 10);
+        jSeparator2.setBounds(110, 350, 420, 10);
 
         jcancelaicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/remover.png"))); // NOI18N
         getContentPane().add(jcancelaicon);
@@ -691,6 +699,12 @@ public class Comprar extends javax.swing.JFrame {
         getContentPane().add(jcancela);
         jcancela.setBounds(40, 430, 105, 33);
 
+        jtotal.setBackground(new java.awt.Color(204, 204, 204));
+        jtotal.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtotal.setForeground(new java.awt.Color(242, 241, 239));
+        getContentPane().add(jtotal);
+        jtotal.setBounds(170, 350, 360, 30);
+
         jsessao.setBackground(new java.awt.Color(204, 204, 204));
         jsessao.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jsessao.setForeground(new java.awt.Color(242, 241, 239));
@@ -704,7 +718,7 @@ public class Comprar extends javax.swing.JFrame {
         jbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/background 4.png"))); // NOI18N
         jbackground.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(242, 241, 239)));
         getContentPane().add(jbackground);
-        jbackground.setBounds(0, 0, 640, 480);
+        jbackground.setBounds(0, 10, 640, 480);
 
         pack();
         setLocationRelativeTo(null);
@@ -1548,5 +1562,7 @@ public class Comprar extends javax.swing.JFrame {
     private javax.swing.JLabel jlabeltitulo;
     private javax.swing.JLabel jsessao;
     private javax.swing.JLabel jsessaotitulo;
+    private javax.swing.JLabel jtotal;
+    private javax.swing.JLabel jtotaltitulo;
     // End of variables declaration//GEN-END:variables
 }
