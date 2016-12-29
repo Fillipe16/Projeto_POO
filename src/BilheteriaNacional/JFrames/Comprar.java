@@ -728,9 +728,8 @@ public class Comprar extends javax.swing.JFrame {
         jSeparator3.setBounds(150, 70, 350, 10);
 
         jbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/background 4.png"))); // NOI18N
-        jbackground.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(242, 241, 239)));
         getContentPane().add(jbackground);
-        jbackground.setBounds(0, 10, 640, 480);
+        jbackground.setBounds(0, 0, 640, 480);
 
         pack();
         setLocationRelativeTo(null);
