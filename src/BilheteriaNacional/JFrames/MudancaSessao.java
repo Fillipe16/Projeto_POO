@@ -35,10 +35,7 @@ public class MudancaSessao extends javax.swing.JFrame {
         this.filmes=f;
         this.sessoes=s;
     }
-    public void getQuantidadeCadTrocar(){
-        
-    }
-    
+
     public MudancaSessao() {
         initComponents();
     }

@@ -137,7 +137,7 @@ public class ValidarIngresso extends javax.swing.JFrame {
     private void jvalidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jvalidarActionPerformed
         // TODO add your handling code here:
         String codigo=jcodigo.getText();//Pega o codigo digitado
-        
+        validar(codigo);
         
         dispose();
     }//GEN-LAST:event_jvalidarActionPerformed
