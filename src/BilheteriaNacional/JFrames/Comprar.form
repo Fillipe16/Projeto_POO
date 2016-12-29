@@ -59,11 +59,11 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ef" green="f1" red="f2" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Total:"/>
+        <Property name="text" type="java.lang.String" value="Total: R$"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="120" y="350" width="-1" height="30"/>
+          <AbsoluteConstraints x="120" y="350" width="90" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -716,7 +716,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="170" y="350" width="360" height="30"/>
+          <AbsoluteConstraints x="200" y="350" width="360" height="30"/>
         </Constraint>
       </Constraints>
     </Component>

@@ -40,7 +40,7 @@ public class Comprar extends javax.swing.JFrame {
     
     Sessao s;
     
-    int quantidadeCadeirasDisponiveis;
+    double quantidadeCadeirasDisponiveis;
     
     public void atualizarQuantidadeCadLivres(int qtd){
         this.quantidadeCadeirasDisponiveis=qtd;
@@ -58,6 +58,9 @@ public class Comprar extends javax.swing.JFrame {
         cadeirasSessao=Sbanco.verC(sala,horario,dia);
         
         atualizandoCadeiras();
+        
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
+        
     }
     public JButton getConfirmar(){
         return jconfirma;
@@ -322,9 +325,9 @@ public class Comprar extends javax.swing.JFrame {
 
         jtotaltitulo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtotaltitulo.setForeground(new java.awt.Color(242, 241, 239));
-        jtotaltitulo.setText("Total:");
+        jtotaltitulo.setText("Total: R$");
         getContentPane().add(jtotaltitulo);
-        jtotaltitulo.setBounds(120, 350, 46, 30);
+        jtotaltitulo.setBounds(120, 350, 90, 30);
 
         jsessaotitulo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jsessaotitulo.setForeground(new java.awt.Color(242, 241, 239));
@@ -703,7 +706,7 @@ public class Comprar extends javax.swing.JFrame {
         jtotal.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtotal.setForeground(new java.awt.Color(242, 241, 239));
         getContentPane().add(jtotal);
-        jtotal.setBounds(170, 350, 360, 30);
+        jtotal.setBounds(200, 350, 360, 30);
 
         jsessao.setBackground(new java.awt.Color(204, 204, 204));
         jsessao.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -752,6 +755,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad1ActionPerformed
 
     private void cad4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad4ActionPerformed
@@ -780,6 +784,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad4ActionPerformed
 
     private void cad2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad2ActionPerformed
@@ -807,6 +812,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad2ActionPerformed
 
     private void cad6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad6ActionPerformed
@@ -835,6 +841,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad6ActionPerformed
 
     private void cad7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad7ActionPerformed
@@ -863,6 +870,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad7ActionPerformed
 
     private void cad5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad5ActionPerformed
@@ -890,6 +898,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad5ActionPerformed
 
     private void cad8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad8ActionPerformed
@@ -917,6 +926,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad8ActionPerformed
 
     private void cad9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad9ActionPerformed
@@ -944,6 +954,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad9ActionPerformed
 
     private void cad11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad11ActionPerformed
@@ -970,6 +981,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad11ActionPerformed
 
     private void cad12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad12ActionPerformed
@@ -996,6 +1008,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad12ActionPerformed
 
     private void cad14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad14ActionPerformed
@@ -1024,6 +1037,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad14ActionPerformed
 
     private void cad15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad15ActionPerformed
@@ -1052,6 +1066,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad15ActionPerformed
 
     private void cad10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad10ActionPerformed
@@ -1080,6 +1095,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad10ActionPerformed
 
     private void cad13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad13ActionPerformed
@@ -1108,6 +1124,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad13ActionPerformed
 
     private void cad16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad16ActionPerformed
@@ -1136,6 +1153,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad16ActionPerformed
 
     private void cad17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad17ActionPerformed
@@ -1164,6 +1182,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad17ActionPerformed
 
     private void cad18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad18ActionPerformed
@@ -1192,6 +1211,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad18ActionPerformed
 
     private void cad3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad3ActionPerformed
@@ -1220,6 +1240,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad3ActionPerformed
 
     private void cad19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad19ActionPerformed
@@ -1248,6 +1269,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad19ActionPerformed
 
     private void cad20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad20ActionPerformed
@@ -1275,6 +1297,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad20ActionPerformed
 
     private void cad21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad21ActionPerformed
@@ -1303,6 +1326,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad21ActionPerformed
 
     private void cad22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad22ActionPerformed
@@ -1331,6 +1355,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad22ActionPerformed
 
     private void cad23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad23ActionPerformed
@@ -1359,6 +1384,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad23ActionPerformed
 
     private void cad24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad24ActionPerformed
@@ -1387,6 +1413,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad24ActionPerformed
 
     private void cad25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad25ActionPerformed
@@ -1415,6 +1442,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad25ActionPerformed
 
     private void cad26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad26ActionPerformed
@@ -1443,6 +1471,7 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad26ActionPerformed
 
     private void jconfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jconfirmaActionPerformed
