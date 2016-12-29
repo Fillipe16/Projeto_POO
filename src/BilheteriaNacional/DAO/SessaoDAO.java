@@ -36,11 +36,11 @@ public class SessaoDAO {
             System.out.println("Erro na insercao do banco de dados: "+e);
         }
      }
-     public void atualizarCadeiras(String cad,String sala,String h,String dia){
+     public void atualizarCadeiras(String cadeiras,String sala,String h,String dia){//Atualiza a coluna cadeiras, uma String contendo as cadeiras compradas para uma determinada sessao.
          PreparedStatement stmt=null;
          try{
              stmt=conexao.prepareStatement("update sessao set cadeiras=? where sala=? and horario=? and dia=?");
-             stmt.setString(1,cad);
+             stmt.setString(1,cadeiras);
              stmt.setString(2,sala);
              stmt.setString(3,h);
              stmt.setString(4,dia);
@@ -52,7 +52,7 @@ public class SessaoDAO {
              System.out.println("Erro na atualização das informação: "+ex);
          }
      }
-     public String verC(String sala,String h,String dia){
+     public String getCadeiras(String sala,String h,String dia){//Retorna a coluna cadeiras.
          String cads="";
          
          try{
@@ -72,10 +72,11 @@ public class SessaoDAO {
       }
       return cads;
     }
-    public void atualizarCadeirasTrocarSessao(String cadeira,String sala,String horario,String dia){
+    public void atualizarCadeirasTrocarSessao(String cadeira,String sala,String horario,String dia){//Diferentemente da anterior esse metodo atualiza as cadeiras para troca de sessao, sendo assim, ele da o update ja mudando a String cadeiras, não sendo necessario recebe-lo como argumento.
         try{
-            PreparedStatement stmt=conexao.prepareStatement("update sessao set cadeiras=replace(cadeiras,if(cadeiras like CONCAT('%',?,', %'),CONCAT(?,', '),CONCAT(', ',?)),'') where cadeiras like CONCAT('%',?,',%') or cadeiras like CONCAT('%',?,']%') and sala=? and horario=? and dia=?");
-            stmt.setString(1, cadeira);
+            PreparedStatement stmt=conexao.prepareStatement("update sessao set cadeiras=replace(cadeiras,if(cadeiras like CONCAT('5',?,', %'),CONCAT(?,', '),CONCAT(', ',?)),'') "
+            + "where cadeiras like CONCAT('%',?,',%') or cadeiras like CONCAT('%',?,']%') and sala=? and horario=? and dia=?");//Codigo sql para dar um update na coluna cadeiras da tabela sessao, trocando a String por uma na qual o nome da cadeira, passado por argumento, não exista. Sendo assim é necessario analisar em que parte da String original tal cadeira está para que seja feita a troca dessa parte por uma String vazia, ou seja, eliminando-na. O where foi utilizado pois existem diversas sessoes e é necessario retirar a cadeira desejada da String cadeiras da sessao correta.
+            stmt.setString(1, cadeira);                                                                                        // Foi necessario colocar os CONCAT, pois a função era preciso analisar em que parte da String a ceira está(começo, meio, fim)sendo assim a anlise mudaria.
             stmt.setString(2, cadeira);
             stmt.setString(3, cadeira);
             stmt.setString(4, cadeira);

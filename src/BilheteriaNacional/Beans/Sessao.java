@@ -17,8 +17,9 @@ import java.util.*;
  * @author Aluno
  */
 public class Sessao {
-    IngressoDAO Ibanco=new IngressoDAO();
+    
     private ArrayList<Cadeira> cadeiras=new ArrayList();
+    
     private String sala;
     private String horario;
     private String dia;
@@ -38,7 +39,7 @@ public class Sessao {
     
     
     
-    public void init(Sessao se){
+    public void init(Sessao se){       //Inicializa o Array de cadeiras todas com o valor de estado 1.
         for(int i=1;i<27;i++){
             String nome="cad"+i;
             Cadeira c=new Cadeira(1,nome);
@@ -46,16 +47,17 @@ public class Sessao {
         }
     }
    
-    public void selecionar(String nome){
+    public void selecionar(String nome){ //Chamada todas as vezes que alguma cadeira é selecionada.
         for(int i=0;i<26;i++){
-            if(cadeiras.get(i).getNome().equals(nome) && cadeiras.get(i).getEstado()==1){
+            if(cadeiras.get(i).getNome().equals(nome) && cadeiras.get(i).getEstado()==1){ //Alterna o estado cadeiras de 1 para -1, ou seja, seleciona para compra
                 cadeiras.get(i).setEstado(-1);
             }
-            else if(cadeiras.get(i).getNome().equals(nome) && cadeiras.get(i).getEstado()==-1){
+            else if(cadeiras.get(i).getNome().equals(nome) && cadeiras.get(i).getEstado()==-1){//Alterna o esatdo da cadeira de -1 para 1, ou seja, deseleciona.
                 cadeiras.get(i).setEstado(1);
             }
         }
     }
+    
     public int verEstado(String nome){
         for(int i=0;i<26;i++){
             if(cadeiras.get(i).getNome().equals(nome)){
@@ -97,40 +99,37 @@ public class Sessao {
         this.dia = dia;
     }
     
-    public static ArrayList<String> dados(String s){
+    public static ArrayList<String> dados(String s){ //Metodo que é usado para facilitar pegar determinados daods de uma string, deste caso, a sala, horario e dia de uma determinada sessao.
         ArrayList<String> dados=new ArrayList();
+        
         int contador=0;
         String sala="";
         String hr="";
         String filme="";
+        
         for(int j=0;j<s.length();j++){
             char c=s.charAt(j);
-            if(c=='|'){
+            if(c=='|'){ //Os pipelines na String sessao são usados para separar os dados.
                 contador++;
             }
-            if(contador==0 && j>5){
-                filme+=s.charAt(j);
+            if(contador==0 && j>5){ //Condição para que o Character c seja pertecente ao nome do filme.
+                filme+=s.charAt(j);//Armazenando os caracteres do filme em uma String, o mesmo acontecendo para os posteriores.
             }
-            if(contador==1 && Character.isDigit(c)){
-                sala+=c;
+            if(contador==1 && Character.isDigit(c)){//Condição para que o Character c seja pertecente a sala.
+                sala+=c; 
             }
-            if(contador==2 && Character.isDigit(c) ||(c==':' && Character.isDigit(s.charAt(j+1)))){
+            if(contador==2 && Character.isDigit(c) ||(c==':' && Character.isDigit(s.charAt(j+1)))){//Condição para que o Character c seja pertecente ao dia.
                 hr+=c;
             }
         }
         dados.add(sala);
         dados.add(hr);
         dados.add(filme);
+        
         return dados;
     }
-    public Cadeira getCad(String nCad,Sessao s){
-        for(int i=0;i<s.getCadeiras().size();i++){
-            if(s.getCadeiras().get(i).getNome().equals(nCad)){
-                return s.getCadeiras().get(i);
-            }
-        }
-        return null;
-    }
+    
+    @Override
     public String toString(){
         return "Horario:"+horario+",Sala:"+sala+",Dia:"+dia;
     }

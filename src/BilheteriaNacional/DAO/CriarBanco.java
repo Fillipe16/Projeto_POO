@@ -17,9 +17,9 @@ public class CriarBanco {
         conexao=new ConexaoBanco().getConexao();
     }
     
-    String sql1="use bilheteria";
+    String sql1="use bilheteria"; //Codigo sql para usar o banco.
     
-    String sql2 = "create table if not exists ingresso(\n" +
+    String sql2 = "create table if not exists ingresso(\n" + //Codigo sql criação da tabela ingresso.
 "	codigo varchar(50) primary key,\n" +
 "	data_filme varchar(10) not null,\n" +
 "    cadeira varchar(5) not null,\n" +
@@ -29,7 +29,7 @@ public class CriarBanco {
 "    preco double not null\n" +
 ");";
     
-    String sql3 = "create table if not exists sessao(\n" +
+    String sql3 = "create table if not exists sessao(\n" + //Codigo sql para criação da tabela sessao.
 "	sala varchar(2),\n" +
 "    horario varchar(10),\n" +
 "    cadeiras varchar(500),\n" +

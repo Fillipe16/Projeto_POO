@@ -28,17 +28,17 @@ public class Comprar extends javax.swing.JFrame {
     IngressoDAO Ibanco=new IngressoDAO();
     SessaoDAO Sbanco=new SessaoDAO();
     
-    String cadeirasSessao="";
+    String cadeirasSessao="";//String de cadeiras usadas para atualizar a imagem das cadeiras(para vermelho) caso essa cadeira pertença a esta String.
     
-    ArrayList<String> cads;
-    ArrayList<Sessao> sessoes=new ArrayList();
+    ArrayList<String> cadeiras;//ArrayList para receber as cadeiras ocupadas em uma determinada sessao
+    ArrayList<Sessao> sessoes=new ArrayList();//Sessoes inicializadas no Tela_Inicial
     
-    String sessao="";
+    String sessao="";//Tais atributos são referentes aos dados que estão contidos na sessao selecionada antes de apertar na função Comprar.
     String sala="";
     String horario="";
     String dia="";
     
-    Sessao s;
+    Sessao s;//Objeto do tipo sessao,referente a sessao selecionada
     
     double quantidadeCadeirasDisponiveis;
     
@@ -46,30 +46,30 @@ public class Comprar extends javax.swing.JFrame {
         this.quantidadeCadeirasDisponiveis=qtd;
     }
     public void atualizarComprar(ArrayList<Sessao> sessoes,String sessao,String horario,String sala,Sessao s,String d){
-        this.sessoes=sessoes;
+        this.sessoes=sessoes;//Inicializa os dados acima
         this.sessao=sessao;
         this.sala=sala;
         this.horario=horario;
         this.s=s;
         this.dia=d;
               
-        jsessao.setText(sessao);
+        jsessao.setText(sessao);//Coloca em um Label que está jFrame Comprar a sessao selecionada, para auxiliar quem vai escolher as cadeiras.
         
-        cadeirasSessao=Sbanco.verC(sala,horario,dia);
+        cadeirasSessao=Sbanco.getCadeiras(sala,horario,dia);//Analisar as cadeiras ocupadas em um determinada sessao, na tabela do banco.
         
         atualizandoCadeiras();
         
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Como não tem nenhuma cadeira selecionada sempre esse valor será 0 e tal dado diz respeito ao valor das cadeiras selecionadas antes do ato de confirmar.
         
     }
     public JButton getConfirmar(){
         return jconfirma;
     }
-    public void atualizandoCadeiras(){
-        
-        if(cadeirasSessao.contains("cad1,") || cadeirasSessao.contains("cad1]")){
-            cad1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/ocupada.png")));   
-            s.getCadeiras().get(0).setEstado(0);
+    public void atualizandoCadeiras(){//Atualiza o icone das cadeiras, colocando-os vermelhos, das cadeiras vendidas.
+        //Foi necessario analisar cadeira por cadeira.
+        if(cadeirasSessao.contains("cad1,") || cadeirasSessao.contains("cad1]")){//As cadeiras cad1 e cad2 tiveram que ter um condicionamento diferenciado pois caso fosse colocado apenas "cad1" pela funcão utilizada,Contains, ele poderia retornar True sendo a String das cadeiras compostas por:[cad15,cad23] 
+            cad1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/ocupada.png"))); //Troca o icone da cadeira.  
+            s.getCadeiras().get(0).setEstado(0);//Muda o estado dela para 0.
         }
         else{
             cad1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));   
@@ -84,7 +84,7 @@ public class Comprar extends javax.swing.JFrame {
             cad2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));   
             s.getCadeiras().get(1).setEstado(1);
         }
-        if(cadeirasSessao.contains("cad3")){
+        if(cadeirasSessao.contains("cad3")){//Como não existe mais que 26 cadeiras, a partir da cad3 não existe a possibilidade de acontecer o problema descrito anteriormente.
             cad3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/ocupada.png")));   
             s.getCadeiras().get(2).setEstado(0);
         }
@@ -729,14 +729,14 @@ public class Comprar extends javax.swing.JFrame {
 
     private void cad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad1ActionPerformed
         // TODO add your handling code here:
-        int aux=s.getCadeiras().get(0).getEstado();
+        int aux=s.getCadeiras().get(0).getEstado();//Guarda o valor do estado da cadeira desse metodo na variavel aux
         
-        if(quantidadeCadeirasDisponiveis==0){
+        if(quantidadeCadeirasDisponiveis==0){//Analisa se a quantidade de cadeiras ja chegou a seu limite
             
-            if(aux==-1){
-                cad1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
-                s.selecionar("cad1");
-                quantidadeCadeirasDisponiveis++;
+            if(aux==-1){//Porém se essa cadeira estiver selecionada, cinza, é possivel deseleciona-la, pois a condição acima é apenas para não utrapassar o limite.
+                cad1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));//Troca o icone para verda,livre.
+                s.selecionar("cad1");//Chama a função selecionar, metodo da classe sessao.
+                quantidadeCadeirasDisponiveis++;//Como a cadeira foi deselecionada, agora a quantidade de cadeiras livres aumentou.
             }
             else{
                 JOptionPane.showMessageDialog(rootPane,"Todas as cadeiras disponiveis foram ocupadas");
@@ -744,7 +744,7 @@ public class Comprar extends javax.swing.JFrame {
             
         }else{
 
-            if(aux==1){
+            if(aux==1){//Quando a quantidade de cadeiras não chegou a 0 e deseja selecionar uma cadeira.
                 cad1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/selecionada.png")));
                 s.selecionar("cad1");
                 quantidadeCadeirasDisponiveis--;
@@ -755,9 +755,9 @@ public class Comprar extends javax.swing.JFrame {
                 quantidadeCadeirasDisponiveis++;
             }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
+        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
     }//GEN-LAST:event_cad1ActionPerformed
-
+    //Os coidgos a seguir realizam o mesmo que o anterior, mudando apenas em que cadeira irá acontecer.
     private void cad4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad4ActionPerformed
         // TODO add your handling code here:
         int aux=s.getCadeiras().get(3).getEstado();
@@ -1476,10 +1476,8 @@ public class Comprar extends javax.swing.JFrame {
 
     private void jconfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jconfirmaActionPerformed
         // TODO add your handling code here:/
-        String filme=Sessao.dados(sessao).get(2);
-        
-        int index_sala=Integer.parseInt(sala)-1;
-        
+        String filme=Sessao.dados(sessao).get(2);//Utiliza um metodo feito para 
+                
         Random random=new Random(); 
         
         for(int i=0;i<s.getCadeiras().size();i++){
@@ -1493,9 +1491,9 @@ public class Comprar extends javax.swing.JFrame {
             }
         }
         
-        cads=Ibanco.cadeirasOcupadas(sala,horario,dia);
-        Sbanco.atualizarCadeiras(cads.toString(), sala, horario,dia);
-        cadeirasSessao=Sbanco.verC(sala,horario,dia);
+        cadeiras=Ibanco.cadeirasOcupadas(sala,horario,dia);
+        Sbanco.atualizarCadeiras(cadeiras.toString(), sala, horario,dia);
+        cadeirasSessao=Sbanco.getCadeiras(sala,horario,dia);
         
         atualizandoCadeiras();
         

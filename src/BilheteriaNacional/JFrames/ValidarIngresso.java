@@ -99,7 +99,7 @@ public class ValidarIngresso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jcancelar);
-        jcancelar.setBounds(50, 190, 107, 33);
+        jcancelar.setBounds(50, 190, 105, 33);
         getContentPane().add(jSeparator3);
         jSeparator3.setBounds(30, 140, 420, 10);
         getContentPane().add(jSeparator2);

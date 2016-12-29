@@ -13,6 +13,7 @@ package BilheteriaNacional.DAO;
 import BilheteriaNacional.Beans.Ingresso;
 import java.sql.*;
 import java.util.ArrayList;
+
 public class IngressoDAO {
     private Connection conexao=null;
 
@@ -39,28 +40,8 @@ public class IngressoDAO {
             System.out.println("Erro na insercao do banco de dados: "+e);
         }
      }
-    public ArrayList<Ingresso> getLista(){
-      
-        ArrayList<Ingresso> ingressos = new ArrayList<Ingresso>();
-        try{
-            PreparedStatement stmt = conexao.prepareStatement("select * from ingresso");
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-
-                Ingresso i = new Ingresso(rs.getString("codigo"),rs.getString("filme"),rs.getString("sala"), rs.getString("cadeira"),rs.getDouble("preco"));
-
-                ingressos.add(i);
-            }
-
-            rs.close();
-            stmt.close();
-        }catch(SQLException e){
-            System.out.println("Erro na consulta dos ingressos: "+e);
-        }
-        return ingressos;
-  }
-  public ArrayList<String> cadeirasOcupadas(String sala,String h,String dia){
+    
+    public ArrayList<String> cadeirasOcupadas(String sala,String h,String dia){ //Retorna um Array contendo o nome das cadeiras ocupadas,por exemplo:[cad1,cad2,cad3].
       ArrayList<String> cadeirasO =new ArrayList();
       try{
             PreparedStatement stmt = conexao.prepareStatement("select cadeira from ingresso where sala=? and data_filme=? and dia=?");
@@ -80,15 +61,13 @@ public class IngressoDAO {
       System.out.println(cadeirasO);
       return cadeirasO;
   }
-  public String validarI(String codig){
+  public String validarI(String codig){//Retorna uma String apenas para ver se tal ingresso existe no banco e assim verificar sua veracidade.
       String cod="";
       try{
             PreparedStatement stmt = conexao.prepareStatement("select codigo from ingresso where codigo=?");
             stmt.setString(1, codig);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
-                System.out.println("CHEGOU AQUI");
-                System.out.println("SENT:"+codig);
                 cod=rs.getString("codigo"); 
             }
             rs.close();

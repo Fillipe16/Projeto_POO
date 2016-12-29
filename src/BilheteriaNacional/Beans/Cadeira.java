@@ -13,7 +13,8 @@ package BilheteriaNacional.Beans;
 public class Cadeira {
 
 
-    private int estado;
+    private int estado; //Diz respeito se ela está livre,selecionada(hora da compra), ou já esta comprada estando associados aos numeros 1,-1 e 0, respectivamente.
+                
     private String nome;
 
     public Cadeira(int estado, String nome) {
