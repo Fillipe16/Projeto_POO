@@ -19,29 +19,28 @@ import javax.swing.JOptionPane;
  * @author Aluno
  */
 public class Tela_Inicial extends javax.swing.JFrame {
-    ArrayList<Sessao> sessoes=new ArrayList();
-    ArrayList<String> filmes=new ArrayList();
-    ArrayList<String> dias=new ArrayList();
+    ArrayList<Sessao> sessoes=new ArrayList();//Array para guardar os objetos sessoes
+    ArrayList<String> filmes=new ArrayList();//Array que guarda os filmes, que também poedm ser chamadas de sessoes.
+    ArrayList<String> dias=new ArrayList();//Guarda os dois dias
     
     Comprar comprar;
     
-    String salae="";
+    String salae=""; //Os atributos abaixo estão relacionados a sessao selecionada
     String horarioe="";
     
     Sessao se;
-    public JButton getComprar(){
-        return jcompra;
-    }
-    public ArrayList initCadeiras(){
+    
+    public ArrayList initCadeiras(){//Inicializar as cadeiras
         SessaoDAO SBanco=new SessaoDAO();
-        for(int k=0;k<dias.size();k++){
+        
+        for(int k=0;k<dias.size();k++){//Essa sequencia de FORs é para criar criar as diferentes sessoes
             for(int i=0;i<filmes.size();i++){
-                int contador=0;
+                int contador=0;//Contar a quantidade de pipelines
                 String sala="";
                 String hr="";
 
                 for(int j=0;j<filmes.get(i).length();j++){
-                    char c=filmes.get(i).charAt(j);
+                    char c=filmes.get(i).charAt(j);//As operações abaixo são semelhantes a função dados na classe Sessao
                     if(c=='|'){
                         contador++;
                     }
@@ -52,17 +51,17 @@ public class Tela_Inicial extends javax.swing.JFrame {
                         hr+=c;
                     }
                 }
-                Sessao s=new Sessao(sala,hr,dias.get(k));
+                Sessao s=new Sessao(sala,hr,dias.get(k));//Cria o objeto s com os atributos necessarios, ou seja, aqueles que são chave primaria da tabela de mesmo nome. 
                 s.init(s);
-                SBanco.adicionar(s);
-                sessoes.add(s);
+                SBanco.adicionar(s);//Adiciona as sessoes no banco
+                sessoes.add(s);//Adiciona as sessoes no ArrayList de Sessao.
             }
             
         }
         return sessoes;
     }
     
-    public void initFilmes(){
+    public void initFilmes(){//Inicializa os filmes(sessoes) além do ArrayList que será usado para o JComboBox.
         filmes.add("Filme: A | Sala: 1 | Horário: 14:20");
         filmes.add("Filme: B | Sala: 1 | Horário: 16:30");
         filmes.add("Filme: C | Sala: 2 | Horário: 13:00");
@@ -75,7 +74,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
         
     }
     
-    public void initBanco(){
+    public void initBanco(){//Inicializa o banco,usando o database criado e cirando as tabelas necessarias.
         CriarBanco b = new CriarBanco();
         b.CriarTabelas();
     }
@@ -84,10 +83,10 @@ public class Tela_Inicial extends javax.swing.JFrame {
      */
     public Tela_Inicial() {
         initComponents();
-        initBanco();
+        initBanco();//Chama as funções de inicialização
         initFilmes();
         initCadeiras();
-        jlist.setListData(filmes.toArray());     
+        jlist.setListData(filmes.toArray());//Coloca os filmes no jList para aparecerem     
     }
 
     /**
@@ -279,19 +278,19 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
     private void jcompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcompraActionPerformed
         // TODO add your handling code here:
-        Object aux=jlist.getSelectedValue();
-        if(aux==null){
+        Object aux=jlist.getSelectedValue();//Pega a sessao selecionada
+        if(aux==null){//Analisa se ela realmente foi selecionada
             JOptionPane.showMessageDialog(rootPane, "Sessão não selecionada!");
         }else{
-            salae=Sessao.dados(aux.toString()).get(0);
+            salae=Sessao.dados(aux.toString()).get(0);//Inicialização da sala e horario que foi selecionado
             horarioe=Sessao.dados(aux.toString()).get(1);
-            for(int i=0;i<sessoes.size();i++){
+            for(int i=0;i<sessoes.size();i++){//Guarda em um atributo do tipo Sessao a sessao(do tipo da classe) está relacionada a sessao selecionada.
                 if(sessoes.get(i).getSala().equals(salae) && sessoes.get(i).getHorario().equals(horarioe)){
                     se=sessoes.get(i);
                 }
             }
 
-            comprar=new Comprar();
+            comprar=new Comprar();//Cria um objeto do tipo do JFrame Compra para mandar as variaveis que são necessarias
             comprar.setVisible(true);
             comprar.atualizarQuantidadeCadLivres(26);
             comprar.atualizarComprar(sessoes,aux.toString(),horarioe,salae,se,jdias.getSelectedItem().toString());
@@ -305,25 +304,25 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
     private void jsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsairActionPerformed
         JOptionPane.showMessageDialog(null, "Volte sempre!");
-        System.exit(0);
+        System.exit(0);//Fecha o programa
     }//GEN-LAST:event_jsairActionPerformed
 
     private void jvalidacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jvalidacaoActionPerformed
         // TODO add your handling code here:
-        ValidarIngresso VI=new ValidarIngresso();
+        ValidarIngresso VI=new ValidarIngresso();//Torna visivel o JFrmae de ValidarIngresso
         VI.setVisible(true);
     }//GEN-LAST:event_jvalidacaoActionPerformed
 
     private void jreembolsoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jreembolsoActionPerformed
         // TODO add your handling code here:
-        Reembolso r=new Reembolso();
+        Reembolso r=new Reembolso();//Torna visivel o JFrmae de reembolso e envia o Array sessoes
         r.setVisible(true);
         r.recebendo(sessoes);
     }//GEN-LAST:event_jreembolsoActionPerformed
 
     private void jmudarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmudarActionPerformed
         // TODO add your handling code here:
-        MudancaSessao MS=new MudancaSessao();
+        MudancaSessao MS=new MudancaSessao();//Mesmo procedimento que o anterior
         MS.setVisible(true);
         MS.recebendo(sessoes,filmes);
     }//GEN-LAST:event_jmudarActionPerformed
@@ -359,9 +358,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
             public void run() {
                 Tela_Inicial t = new Tela_Inicial();
                 t.setVisible(true);
-                t.setSize(640, 480);
-                t.setResizable(false);
-                t.setLocationRelativeTo(null);
+               
             }
         });
     }

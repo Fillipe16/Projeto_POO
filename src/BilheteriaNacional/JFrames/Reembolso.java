@@ -29,27 +29,29 @@ public class Reembolso extends javax.swing.JFrame {
     
     ArrayList<Sessao> sessoes=new ArrayList();
     
-    public void recebendo(ArrayList<Sessao> s){
+    public void recebendo(ArrayList<Sessao> s){//Recebe o ArrayList sessoes
         sessoes=s;
     }
-    public int removerCadeirasSessaoOcupadasPorCodigos(String Stringcodigos){
+    
+    public int removerCadeirasSessaoOcupadasPorCodigos(String Stringcodigos){//Função para remover os ingressos que têm os codigos enviados 
         ArrayList<String> codigos;
-        codigos=new ArrayList(Arrays.asList(Stringcodigos.split(",")));
+        codigos=new ArrayList(Arrays.asList(Stringcodigos.split(",")));//Cria um ArrayList fazendo um cast da String colocada no campo de texto da tela, fazendo com que cada elemento do Array seja preenchido pelos codigos colocados, por isso foi colocado a função split, ja que os codigos colocados foram separados por virgula.
         
         int quantidadeCadeiras=codigos.size();
+        
         for(int i=0;i<codigos.size();i++){
-            if(Ibanco.validarI(codigos.get(i)).equals("")){
+            if(Ibanco.validarI(codigos.get(i)).equals("")){//Caso o codigo não exista ele não realiza a operação de remove-lo.
                 JOptionPane.showMessageDialog(rootPane, codigos.get(i)+" invalido!");
-                quantidadeCadeiras=0;
+                quantidadeCadeiras=0;//Atribui 0 para que fique claro a invalidade deste codigo.
             }else{
-                Ibanco.deleteI(codigos.get(i));
+                Ibanco.deleteI(codigos.get(i));//Delete um ingresso valido do banco
 
-                String StringnomeCad=codigos.get(i).substring(0, codigos.get(i).length()-13);
+                String StringnomeCad=codigos.get(i).substring(0, codigos.get(i).length()-13);//Utilizando a função SUBSTRING para pegar no codigo as informações do numero da ceira,sala,horario e dia. 
                 String Stringsala=codigos.get(i).substring(codigos.get(i).length()-13,codigos.get(i).length()-12);
                 String Stringhorario=codigos.get(i).substring(codigos.get(i).length()-12,codigos.get(i).length()-10) + ":" + codigos.get(i).substring(codigos.get(i).length()-10,codigos.get(i).length()-8);
                 String Stringdia=codigos.get(i).substring(codigos.get(i).length()-8,codigos.get(i).length()-6) + "/" + codigos.get(i).substring(codigos.get(i).length()-6,codigos.get(i).length()-4);
 
-                Sbanco.atualizarCadeirasTrocarSessao("cad"+StringnomeCad, Stringsala, Stringhorario, Stringdia);
+                Sbanco.atualizarCadeirasTrocarSessao("cad"+StringnomeCad, Stringsala, Stringhorario, Stringdia);//Chama a função para que ela remova a cadeira com o referido codigo da String cadeiras que está no banco.
             }
         }
         
@@ -162,9 +164,9 @@ public class Reembolso extends javax.swing.JFrame {
 
     private void jreembolsarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jreembolsarActionPerformed
         // TODO add your handling code here:
-        String cod=jcodigo.getText();
+        String cod=jcodigo.getText();//Pega o codigo digitado no campo de texto
         
-        removerCadeirasSessaoOcupadasPorCodigos(cod);
+        removerCadeirasSessaoOcupadasPorCodigos(cod);//Chama a função anterior
         
         dispose();
     }//GEN-LAST:event_jreembolsarActionPerformed
@@ -207,9 +209,7 @@ public class Reembolso extends javax.swing.JFrame {
             public void run() {
                 Reembolso r = new Reembolso();
                 r.setVisible(true);
-                r.setSize(480,240);
-                r.setLocationRelativeTo(null);
-                r.setResizable(true);
+                
             }
         });
     }

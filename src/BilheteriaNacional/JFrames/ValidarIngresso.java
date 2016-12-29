@@ -126,8 +126,9 @@ public class ValidarIngresso extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     public void validar(String codigo){
         IngressoDAO Ibanco=new IngressoDAO();
-        String cod=Ibanco.validarI(codigo);
-        if(!cod.equals("")){
+        
+        String cod=Ibanco.validarI(codigo);//Chama a função para o banco
+        if(!cod.equals("")){//Verifica se é veridico
             JOptionPane.showMessageDialog(rootPane, "Ingresso validado com sucesso");
         }else{
             JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro na validação do ingresso");
@@ -135,7 +136,7 @@ public class ValidarIngresso extends javax.swing.JFrame {
     }
     private void jvalidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jvalidarActionPerformed
         // TODO add your handling code here:
-        String codigo=jcodigo.getText();
+        String codigo=jcodigo.getText();//Pega o codigo digitado
         
         
         dispose();
