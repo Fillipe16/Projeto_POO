@@ -186,7 +186,7 @@ public class MudancaSessao extends javax.swing.JFrame {
         jProximoHorario.setBackground(new java.awt.Color(37, 116, 169));
         jProximoHorario.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jProximoHorario.setForeground(new java.awt.Color(242, 241, 239));
-        jProximoHorario.setText("h/m");
+        jProximoHorario.setText("h:m");
         jProximoHorario.setBorder(null);
         jProximoHorario.setOpaque(false);
         jProximoHorario.addActionListener(new java.awt.event.ActionListener() {
