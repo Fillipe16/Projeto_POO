@@ -57,7 +57,6 @@ public class MudancaSessao extends javax.swing.JFrame {
         jProximoHorario5 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jProximoHorario8 = new javax.swing.JTextField();
-        jassessaotitulo = new javax.swing.JLabel();
         jpsessaotitulo = new javax.swing.JLabel();
         jProximaSalatitulo = new javax.swing.JLabel();
         jProximaSala = new javax.swing.JTextField();
@@ -133,12 +132,6 @@ public class MudancaSessao extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jassessaotitulo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jassessaotitulo.setForeground(new java.awt.Color(242, 241, 239));
-        jassessaotitulo.setText("Sessão Atual:");
-        getContentPane().add(jassessaotitulo);
-        jassessaotitulo.setBounds(162, 149, 110, 24);
-
         jpsessaotitulo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jpsessaotitulo.setForeground(new java.awt.Color(242, 241, 239));
         jpsessaotitulo.setText("Próxima Sessão:");
@@ -206,9 +199,9 @@ public class MudancaSessao extends javax.swing.JFrame {
 
         jcodigoAtualtitulo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jcodigoAtualtitulo.setForeground(new java.awt.Color(242, 241, 239));
-        jcodigoAtualtitulo.setText("Código:");
+        jcodigoAtualtitulo.setText("Códigos:");
         getContentPane().add(jcodigoAtualtitulo);
-        jcodigoAtualtitulo.setBounds(162, 176, 62, 30);
+        jcodigoAtualtitulo.setBounds(162, 176, 80, 30);
 
         jcodigoAtual.setBackground(new java.awt.Color(37, 116, 169));
         jcodigoAtual.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -217,7 +210,7 @@ public class MudancaSessao extends javax.swing.JFrame {
         jcodigoAtual.setBorder(null);
         jcodigoAtual.setOpaque(false);
         getContentPane().add(jcodigoAtual);
-        jcodigoAtual.setBounds(228, 179, 250, 30);
+        jcodigoAtual.setBounds(238, 179, 250, 30);
 
         jtrocaricon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/mudar.png"))); // NOI18N
         getContentPane().add(jtrocaricon);
@@ -267,7 +260,7 @@ public class MudancaSessao extends javax.swing.JFrame {
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(180, 70, 280, 10);
         getContentPane().add(jSeparator3);
-        jSeparator3.setBounds(80, 140, 470, 10);
+        jSeparator3.setBounds(80, 160, 470, 10);
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(80, 220, 470, 10);
         getContentPane().add(jSeparator4);
@@ -419,7 +412,6 @@ public class MudancaSessao extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JButton jTrocar;
-    private javax.swing.JLabel jassessaotitulo;
     private javax.swing.JLabel jbackground;
     private javax.swing.JLabel jcancelaicon;
     private javax.swing.JTextField jcodigoAtual;
