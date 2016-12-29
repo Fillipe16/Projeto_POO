@@ -42,8 +42,13 @@ public class Comprar extends javax.swing.JFrame {
     
     double quantidadeCadeirasDisponiveis;
     
-    public void atualizarQuantidadeCadLivres(int qtd){
+    double quantidadeCadeirasDisponiveisMS;
+    boolean b;
+    
+    public void atualizarQuantidadeCadLivres(int qtd,boolean aux){
         this.quantidadeCadeirasDisponiveis=qtd;
+        b=aux;
+   
     }
     public void atualizarComprar(ArrayList<Sessao> sessoes,String sessao,String horario,String sala,Sessao s,String d){
         this.sessoes=sessoes;//Inicializa os dados acima
@@ -59,7 +64,11 @@ public class Comprar extends javax.swing.JFrame {
         
         atualizandoCadeiras();
         
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Como não tem nenhuma cadeira selecionada sempre esse valor será 0 e tal dado diz respeito ao valor das cadeiras selecionadas antes do ato de confirmar.
+        if(b==true){
+            jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+        }else{
+            jtotaltitulo.setText(null);
+        }
         
     }
     public JButton getConfirmar(){
@@ -754,8 +763,13 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad1");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }
+            else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
     }//GEN-LAST:event_cad1ActionPerformed
     //Os coidgos a seguir realizam o mesmo que o anterior, mudando apenas em que cadeira irá acontecer.
     private void cad4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad4ActionPerformed
@@ -783,8 +797,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad4");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad4ActionPerformed
 
     private void cad2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad2ActionPerformed
@@ -811,8 +829,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad2");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad2ActionPerformed
 
     private void cad6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad6ActionPerformed
@@ -840,8 +862,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad6");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad6ActionPerformed
 
     private void cad7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad7ActionPerformed
@@ -869,8 +895,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad7");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad7ActionPerformed
 
     private void cad5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad5ActionPerformed
@@ -897,8 +927,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad5");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad5ActionPerformed
 
     private void cad8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad8ActionPerformed
@@ -925,8 +959,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad8");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad8ActionPerformed
 
     private void cad9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad9ActionPerformed
@@ -953,8 +991,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad9");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad9ActionPerformed
 
     private void cad11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad11ActionPerformed
@@ -980,8 +1022,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad11");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad11ActionPerformed
 
     private void cad12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad12ActionPerformed
@@ -1007,8 +1053,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad12");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad12ActionPerformed
 
     private void cad14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad14ActionPerformed
@@ -1036,8 +1086,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad14");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad14ActionPerformed
 
     private void cad15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad15ActionPerformed
@@ -1065,8 +1119,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad15");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad15ActionPerformed
 
     private void cad10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad10ActionPerformed
@@ -1094,8 +1152,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad10");
                 quantidadeCadeirasDisponiveis++;
             }
+           if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad10ActionPerformed
 
     private void cad13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad13ActionPerformed
@@ -1123,8 +1185,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad13");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad13ActionPerformed
 
     private void cad16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad16ActionPerformed
@@ -1152,8 +1218,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad16");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad16ActionPerformed
 
     private void cad17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad17ActionPerformed
@@ -1181,8 +1251,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad17");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad17ActionPerformed
 
     private void cad18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad18ActionPerformed
@@ -1210,8 +1284,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad18");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad18ActionPerformed
 
     private void cad3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad3ActionPerformed
@@ -1239,8 +1317,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad3");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad3ActionPerformed
 
     private void cad19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad19ActionPerformed
@@ -1268,8 +1350,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad19");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad19ActionPerformed
 
     private void cad20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad20ActionPerformed
@@ -1296,8 +1382,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad20");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad20ActionPerformed
 
     private void cad21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad21ActionPerformed
@@ -1325,8 +1415,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad21");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad21ActionPerformed
 
     private void cad22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad22ActionPerformed
@@ -1354,8 +1448,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad22");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad22ActionPerformed
 
     private void cad23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad23ActionPerformed
@@ -1383,8 +1481,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad23");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad23ActionPerformed
 
     private void cad24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad24ActionPerformed
@@ -1412,8 +1514,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad24");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad24ActionPerformed
 
     private void cad25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad25ActionPerformed
@@ -1441,15 +1547,19 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad25");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad25ActionPerformed
 
     private void cad26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cad26ActionPerformed
         // TODO add your handling code here:
         int aux=s.getCadeiras().get(25).getEstado();
         
-        if(quantidadeCadeirasDisponiveis==0){
+        if(26-quantidadeCadeirasDisponiveis==0){
             if(aux==-1){
                 cad26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BilheteriaNacional/Image/livre.png")));
                 s.selecionar("cad26");
@@ -1470,8 +1580,12 @@ public class Comprar extends javax.swing.JFrame {
                 s.selecionar("cad26");
                 quantidadeCadeirasDisponiveis++;
             }
+            if(b==true){
+                jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));//Atualiza o valor da compra das cadeiras
+            }else{
+                jtotaltitulo.setText(null);
+            }
         }
-        jtotal.setText(String.valueOf((26-quantidadeCadeirasDisponiveis)*10));
     }//GEN-LAST:event_cad26ActionPerformed
 
     private void jconfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jconfirmaActionPerformed

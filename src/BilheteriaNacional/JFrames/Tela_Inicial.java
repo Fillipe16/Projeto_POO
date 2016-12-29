@@ -292,7 +292,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
             comprar=new Comprar();//Cria um objeto do tipo do JFrame Compra para mandar as variaveis que são necessarias
             comprar.setVisible(true);
-            comprar.atualizarQuantidadeCadLivres(26);
+            comprar.atualizarQuantidadeCadLivres(26,true);
             comprar.atualizarComprar(sessoes,aux.toString(),horarioe,salae,se,jdias.getSelectedItem().toString());
         }
 

@@ -313,8 +313,8 @@ public class MudancaSessao extends javax.swing.JFrame {
                 String proxHorario=jProximoHorario.getText();
                 String proxSala=jProximaSala.getText();
                 String proxDia=jProximoDia.getText();
-
-                inputDados.atualizarQuantidadeCadLivres(quantidadeCadeiras);
+                
+                inputDados.atualizarQuantidadeCadLivres(quantidadeCadeiras,false);
                 inputDados.atualizarComprar(sessoes,sessaoS, proxHorario, proxSala, sessaoProx, proxDia);
                 inputDados.setVisible(true);
 
